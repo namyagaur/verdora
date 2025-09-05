@@ -1,0 +1,130 @@
+/* ================= Expenses Page ================= */
+
+/* Container */
+.expenses-page {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;          /* space between sections */
+  padding: 30px;
+  width: 100%;
+  max-width: 1000px;  /* wide content area */
+  margin: 0 auto;
+}
+
+/* Page title */
+.expenses-page h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #004d4d;
+  margin-bottom: 25px;
+}
+
+/* Search & filter controls */
+.expenses-controls {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+
+.expenses-controls input,
+.expenses-controls select {
+  padding: 14px 18px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  flex: 1;
+}
+
+/* List of expenses */
+.expense-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;  /* more space between expense items */
+}
+
+/* Single expense item */
+.expense-item {
+  display: flex;
+  justify-content: space-between; /* left stack vs category right */
+  align-items: center;
+  padding: 25px 30px;             /* generous internal spacing */
+  border-radius: 15px;
+  background-color: #f4f9f9;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  min-height: 100px;
+  gap: 40px;                       /* space between left and right sides */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expense-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+
+/* Left stack (Price, Title, Date) */
+.expense-left {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;      /* spacing inside left stack */
+  flex: 1;       /* expand to use available width */
+}
+
+/* Price */
+.expense-amount {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: #008080;
+}
+
+/* Title */
+.expense-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #004d4d;
+}
+
+/* Date */
+.expense-date {
+  font-size: 0.95rem;
+  color: #666;
+}
+
+/* Right side category */
+.expense-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.expense-category {
+  padding: 8px 20px;        /* larger badge */
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+/* Category colors */
+.expense-category.food { background-color: #FF6B6B; }
+.expense-category.transport { background-color: #4ECDC4; }
+.expense-category.entertainment { background-color: #FFD93D; color: #333; }
+.expense-category.bills { background-color: #1A535C; }
+.expense-category.shopping { background-color: #FF9F1C; }
+.expense-category.health { background-color: #6A4C93; }
+.expense-category.other { background-color: #A8A8A8; }
+
+/* Responsive adjustments */
+@media screen and (max-width: 700px) {
+  .expense-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .expense-right {
+    align-self: flex-start;
+  }
+}

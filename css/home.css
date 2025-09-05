@@ -1,0 +1,125 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Title */
+.title {
+  font-family: 'Parisienne', cursive;
+  font-weight: 600;
+  color: #438181;
+  font-size: 28px;
+}
+
+/* Background */
+body {
+  background: linear-gradient(135deg, #002b2b, #004d4d, #006666, #008080);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Main container */
+.main-body {
+  background: white;
+  width: 95%;
+  max-width: 1300px;
+  min-height: 85vh;
+  border-radius: 20px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35),
+              0 0 60px rgba(0, 128, 128, 0.35);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------------- NAVBAR ---------------- */
+.nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: #f4f9f9;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  color: #004d4d;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.nav div {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 6px 14px;
+  border-radius: 8px;
+}
+
+.nav div:hover {
+  background: #e0f2f1;
+  color: #006666;
+  transform: translateY(-2px);
+}
+
+.nav .active {
+  background: #008080;
+  color: white;
+}
+
+/* ---------------- CONTENT AREA ---------------- */
+.content-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Pages (hidden/shown dynamically) */
+.page {
+  display: none;
+  flex: 1;
+}
+
+.page.active {
+  display: block;
+}
+
+/* ---------------- COLUMNS ---------------- */
+.portions {
+  display: flex;
+  gap: 20px;
+  flex: 1;
+}
+
+.left-portion,
+.right-portion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ---------------- CARDS ---------------- */
+.card {
+  background: #f9f9f9;
+  border-radius: 15px;
+  padding: 20px;
+  min-height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  background: #ffffff;
+}

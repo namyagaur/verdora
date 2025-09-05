@@ -1,0 +1,63 @@
+/* Add Expense Form */
+.add-expense-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px;
+}
+
+.add-expense-form h2 {
+  color: #004d4d;
+  margin-bottom: 10px;
+}
+
+.add-expense-form input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+
+.category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.category-tab {
+  padding: 10px 15px;
+  background: #f4f9f9;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.category-tab:hover {
+  background: #e0f2f1;
+  transform: translateY(-2px);
+}
+
+.category-tab.active {
+  background: #008080;
+  color: white;
+}
+
+.add-expense-form button {
+  padding: 12px;
+  border: none;
+  background: #008080;
+  color: white;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-expense-form button:hover {
+  background: #006666;
+  transform: translateY(-2px);
+}
