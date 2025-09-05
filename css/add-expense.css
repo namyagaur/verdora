@@ -1,17 +1,32 @@
-/* Add Expense Form */
-.add-expense-form {
+.transaction-box {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  gap: 20px; /* space between the two forms */
+  align-items: flex-start; /* top aligned */
+  justify-content: center; /* center forms horizontally */
+  flex-wrap: wrap; /* wraps on small screens */
   padding: 20px;
 }
 
-.add-expense-form h2 {
+.transaction-form {
+  flex: 1; /* each form takes equal space */
+  min-width: 300px; /* prevents shrinking too much */
+  max-width: 400px; /* optional, keeps it readable */
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.transaction-form h2 {
   color: #004d4d;
   margin-bottom: 10px;
 }
 
-.add-expense-form input {
+.transaction-form input {
   padding: 10px;
   border-radius: 8px;
   border: 1px solid #ccc;
@@ -37,27 +52,52 @@
 }
 
 .category-tab:hover {
-  background: #e0f2f1;
   transform: translateY(-2px);
 }
 
-.category-tab.active {
-  background: #008080;
+/* Active category colors based on type */
+.transaction-form[data-type="expense"] .category-tab.active {
+  background: #d9534f; /* red */
   color: white;
 }
 
-.add-expense-form button {
+.transaction-form[data-type="income"] .category-tab.active {
+  background: #008080; /* teal */
+  color: white;
+}
+
+.transaction-form button {
   padding: 12px;
   border: none;
-  background: #008080;
-  color: white;
   font-weight: 600;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
+  color: white;
 }
 
-.add-expense-form button:hover {
+/* Buttons based on type */
+.transaction-form[data-type="expense"] button {
+  background: #d9534f; /* red */
+}
+
+.transaction-form[data-type="expense"] button:hover {
+  background: #c9302c;
+}
+
+.transaction-form[data-type="income"] button {
+  background: #008080; /* teal */
+}
+
+.transaction-form[data-type="income"] button:hover {
   background: #006666;
-  transform: translateY(-2px);
+}
+
+/* Optional: give card border hint for type */
+.transaction-form[data-type="expense"] {
+  border: 2px solid #d9534f;
+}
+
+.transaction-form[data-type="income"] {
+  border: 2px solid #008080;
 }
