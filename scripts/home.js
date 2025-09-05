@@ -1,3 +1,6 @@
+import "../data/expenses.js"
+import "../scripts/add-expenses.js"
+
 const navItems = document.querySelectorAll('.nav-item');
 const contentDiv = document.getElementById('content');
 
@@ -5,8 +8,6 @@ function loadPage(name) {
     fetch(`pages/${name}.html`)  // only pass 'overview', 'expenses', etc.
         .then(res => res.text())
         .then(html => {
-
-            console.log(name);
             contentDiv.innerHTML = html;
 
             // Run page-specific JS if needed
@@ -31,5 +32,10 @@ navItems.forEach(item => {
 window.addEventListener('DOMContentLoaded', () => {
     const defaultNav = document.querySelector('.nav-item[data-page="overview"]');
     defaultNav.classList.add('active');
-   console.log(loadPage('overview'));  // automatically fetch overview.html
+   console.log(loadPage('add-expense'));  // automatically fetch overview.html
 });
+
+
+
+
+

@@ -54,6 +54,10 @@
 .category-tab:hover {
   transform: translateY(-2px);
 }
+.category-tab:active{
+  background-color: #aec4c4;
+
+}
 
 /* Active category colors based on type */
 .transaction-form[data-type="expense"] .category-tab.active {

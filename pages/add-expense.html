@@ -3,28 +3,28 @@
   <div class="transaction-form card" data-type="expense">
     <h2>Add New Expense</h2>
     <label>Amount</label>
-    <input type="number" placeholder="0.00">
+    <input type="number" placeholder="0.00" min="1">
     <label>Date</label>
     <input type="date" placeholder="Select Date">
     <label>Description</label>
     <input type="text" placeholder="E.g., Lunch, Movie, Taxi">
     <label>Category</label>
     <div class="category-tabs">
-      <div class="category-tab">🍔 Food</div>
-      <div class="category-tab">🚗 Transport</div>
-      <div class="category-tab">🎬 Entertainment</div>
-      <div class="category-tab">💡 Bills</div>
-      <div class="category-tab">🛍️ Shopping</div>
-      <div class="category-tab">💊 Health</div>
-      <div class="category-tab">✨ Other</div>
+      <div class="category-tab" id="Food">🍔 Food</div>
+      <div class="category-tab" id ="Transport">🚗 Transport</div>
+      <div class="category-tab" id="Entertainment">🎬 Entertainment</div>
+      <div class="category-tab" id="Bills">💡 Bills</div>
+      <div class="category-tab" id="Shopping">🛍️ Shopping</div>
+      <div class="category-tab" id="Health">💊 Health</div>
+      <div class="category-tab" id="Other">✨ Other</div>
     </div>
-    <button>Add Expense</button>
+    <button class="add-button">Add Expense</button>
   </div>
 
   <div class="transaction-form card" data-type="income">
     <h2>Add New Income</h2>
     <label>Amount</label>
-    <input type="number" placeholder="0.00">
+    <input type="number" placeholder="0.00" min="1">
     <label>Date</label>
     <input type="date" placeholder="Select Date">
     <label>Description</label>
@@ -36,7 +36,6 @@
       <div class="category-tab">📈 Bonus</div>
       <div class="category-tab">✨ Other</div>
     </div>
-    <button>Add Income</button>
+    <button class="add-button">Add Income</button>
   </div>
-
 </div>
