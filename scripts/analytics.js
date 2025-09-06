@@ -1,93 +1,80 @@
-// Include this script in your HTML after loading Chart.js
-// Example CDN: <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+import { expensesTracker } from "../data/expenses.js";
 
-// ----- Pie Chart: Spending by Category -----
-const ctxPie = document.getElementById("categoryPieChart").getContext("2d");
+// 🥧 Pie Chart – Spending by Category
+export function renderCategoryPieChart() {
+  const categoryTotals = {};
 
-const categoryPieChart = new Chart(ctxPie, {
-    type: "pie",
-    data: {
-        labels: ["Food", "Transport", "Entertainment", "Bills", "Shopping", "Health", "Other"],
+  expensesTracker.forEach(exp => {
+    categoryTotals[exp.category] = (categoryTotals[exp.category] || 0) + Number(exp.amount);
+  });
+
+  const ctx = document.getElementById("categoryPieChart");
+  if (ctx) {
+    new Chart(ctx, {
+      type: "pie",
+      data: {
+        labels: Object.keys(categoryTotals),
         datasets: [{
-            label: "Spending by Category",
-            data: [120, 80, 50, 100, 60, 30, 40], // Example data
-            backgroundColor: [
-                "#FF6384",
-                "#36A2EB",
-                "#FFCE56",
-                "#4BC0C0",
-                "#9966FF",
-                "#FF9F40",
-                "#8BC34A"
-            ],
-            borderWidth: 1,
-            borderColor: "#fff"
+          data: Object.values(categoryTotals),
+          backgroundColor: [
+            "#FF6384", "#36A2EB", "#FFCE56", "#4BC0C0", "#9966FF", "#FF9F40"
+          ],
         }]
-    },
-    options: {
+      },
+      options: {
         responsive: true,
         plugins: {
-            legend: {
-                position: "bottom",
-                labels: {
-                    font: {
-                        size: 14
-                    }
-                }
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        return `$${context.raw}`;
-                    }
-                }
-            }
+          legend: { position: "bottom" },
+          title: { display: true, text: "Spending by Category" }
         }
-    }
-});
+      }
+    });
+  }
+}
 
-// ----- Line Chart: Monthly Trends -----
-const ctxLine = document.getElementById("monthlyLineChart").getContext("2d");
+// 📈 Line Chart – Monthly Expense Trends
+export function renderMonthlyLineChart() {
+  const monthlyTotals = {};
 
-const monthlyLineChart = new Chart(ctxLine, {
-    type: "line",
-    data: {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
+  expensesTracker.forEach(exp => {
+    const month = exp.date.slice(0, 7); // "YYYY-MM"
+    monthlyTotals[month] = (monthlyTotals[month] || 0) + Number(exp.amount);
+  });
+
+  const sortedMonths = Object.keys(monthlyTotals).sort();
+  const totals = sortedMonths.map(month => monthlyTotals[month]);
+
+  const ctx = document.getElementById("monthlyLineChart");
+  if (ctx) {
+    new Chart(ctx, {
+      type: "line",
+      data: {
+        labels: sortedMonths,
         datasets: [{
-            label: "Monthly Expenses",
-            data: [500, 700, 450, 800, 600, 750, 900, 650, 720], // Example data
-            fill: true,
-            backgroundColor: "rgba(0, 128, 128, 0.2)",
-            borderColor: "#008080",
-            borderWidth: 2,
-            tension: 0.3,
-            pointRadius: 5,
-            pointBackgroundColor: "#008080"
+          label: "Monthly Expense",
+          data: totals,
+          borderColor: "#36A2EB",
+          backgroundColor: "rgba(54, 162, 235, 0.2)",
+          fill: true,
+          tension: 0.3
         }]
-    },
-    options: {
+      },
+      options: {
         responsive: true,
         plugins: {
-            legend: {
-                display: false
-            },
-            tooltip: {
-                callbacks: {
-                    label: function(context) {
-                        return `$${context.raw}`;
-                    }
-                }
-            }
+          legend: { display: false },
+          title: { display: true, text: "Monthly Expense Trends" }
         },
         scales: {
-            y: {
-                beginAtZero: true,
-                ticks: {
-                    callback: function(value) {
-                        return `$${value}`;
-                    }
-                }
-            }
+          y: { beginAtZero: true }
         }
-    }
-});
+      }
+    });
+  }
+}
+
+// 🔁 Initialize Both Charts
+export function initAnalyticsCharts() {
+  renderCategoryPieChart();
+  renderMonthlyLineChart();
+}
