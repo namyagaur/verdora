@@ -1,5 +1,5 @@
 import "../data/expenses.js"
-import {addToExpenses,saveToStorage,removeFromExpenses,loadExpenses,expensesTracker,renderExpenses} from "../data/expenses.js";
+import {addToExpenses,saveToStorage,removeFromExpenses,applyFilters ,loadExpenses,expensesTracker,renderExpenses} from "../data/expenses.js";
 
 import "../scripts/add-expenses.js"
 import  "../scripts/overview.js"
@@ -10,18 +10,34 @@ const navItems = document.querySelectorAll('.nav-item');
 const contentDiv = document.getElementById('content');
 
 function loadPage(name) {
-    fetch(`pages/${name}.html`)  // only pass 'overview', 'expenses', etc.
+    fetch(`pages/${name}.html`)  
         .then(res => res.text())
         .then(html => {
             contentDiv.innerHTML = html;
 
-            // Run page-specific JS if needed
+            
             if (name === "analytics") {
-                initAnalyticsCharts()// only if analytics page
+                initAnalyticsCharts()
             }
             if (name === "expenses") {
-                renderExpenses(); // only if analytics page
+                loadExpenses();
+                applyFilters(); 
+
+                const searchInput = document.querySelector(".expenses-controls input");
+                const categorySelect = document.querySelector(".expenses-controls select");
+
+                if (searchInput) {
+                searchInput.addEventListener("input", applyFilters);
+                }
+
+                if (categorySelect) {
+                categorySelect.addEventListener("change", applyFilters);
+                }
             }
+
+
+
+
             if (name === "overview") {
                 initAnalyticsCharts();
                 renderTotalExpenses(); 
@@ -34,7 +50,7 @@ function loadPage(name) {
         .catch(err => console.error("Error loading page:", err));
 }
 
-// Handle nav clicks
+
 navItems.forEach(item => {
     item.addEventListener('click', () => {
         navItems.forEach(nav => nav.classList.remove('active'));
@@ -46,10 +62,8 @@ navItems.forEach(item => {
 });
 
 window.addEventListener('DOMContentLoaded', () => {
-    const defaultNav = document.querySelector('.nav-item[data-page="overview"]');
-    defaultNav.classList.add('active');
-    loadExpenses();
-   console.log(loadPage('overview'));  // automatically fetch overview.html
+  const defaultNav = document.querySelector('.nav-item[data-page="overview"]');
+  defaultNav.classList.add('active');
+  loadExpenses();
+  loadPage('overview'); 
 });
-
-

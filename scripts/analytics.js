@@ -1,6 +1,6 @@
 import { expensesTracker } from "../data/expenses.js";
 
-// 🥧 Pie Chart – Spending by Category
+
 export function renderCategoryPieChart() {
   const categoryTotals = {};
 
@@ -32,7 +32,7 @@ export function renderCategoryPieChart() {
   }
 }
 
-// 📈 Line Chart – Monthly Expense Trends
+
 export function renderMonthlyLineChart() {
   const monthlyTotals = {};
 
@@ -73,7 +73,7 @@ export function renderMonthlyLineChart() {
   }
 }
 
-// 🔁 Initialize Both Charts
+
 export function initAnalyticsCharts() {
   renderCategoryPieChart();
   renderMonthlyLineChart();

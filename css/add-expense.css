@@ -1,29 +1,32 @@
 .transaction-box {
   display: flex;
-  gap: 20px; /* space between the two forms */
-  align-items: flex-start; /* top aligned */
-  justify-content: center; /* center forms horizontally */
-  flex-wrap: wrap; /* wraps on small screens */
+  gap: 20px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   padding: 20px;
 }
 
 .transaction-form {
-  flex: 1; /* each form takes equal space */
-  min-width: 300px; /* prevents shrinking too much */
-  max-width: 400px; /* optional, keeps it readable */
-  background: #f9f9f9;
+  flex: 1;
+  min-width: 300px;
+  max-width: 400px;
+  background: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   gap: 15px;
+  border: 2px solid #e0e0e0;
 }
 
 .transaction-form h2 {
-  color: #004d4d;
+  color: #111;
   margin-bottom: 10px;
+  font-size: 1.3rem;
+  font-weight: 600;
 }
 
 .transaction-form input {
@@ -31,6 +34,8 @@
   border-radius: 8px;
   border: 1px solid #ccc;
   font-size: 1rem;
+  background: #f9f9f9;
+  color: #111;
 }
 
 .category-tabs {
@@ -41,7 +46,7 @@
 
 .category-tab {
   padding: 10px 15px;
-  background: #f4f9f9;
+  background: #f5f5f5;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
@@ -49,25 +54,28 @@
   align-items: center;
   gap: 6px;
   transition: all 0.2s ease;
+  color: #222;
+  border: 1px solid #ddd;
 }
 
 .category-tab:hover {
   transform: translateY(-2px);
+  background-color: #ebebeb;
 }
-.category-tab:active{
-  background-color: #aec4c4;
 
+.category-tab:active {
+  background-color: #dcdcdc;
 }
 
 /* Active category colors based on type */
 .transaction-form[data-type="expense"] .category-tab.active {
-  background: #d9534f; /* red */
-  color: white;
+  background: #111;
+  color: #fff;
 }
 
 .transaction-form[data-type="income"] .category-tab.active {
-  background: #008080; /* teal */
-  color: white;
+  background: #000;
+  color: #fff;
 }
 
 .transaction-form button {
@@ -77,31 +85,31 @@
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s ease;
-  color: white;
+  color: #fff;
 }
 
 /* Buttons based on type */
 .transaction-form[data-type="expense"] button {
-  background: #d9534f; /* red */
+  background: #111;
 }
 
 .transaction-form[data-type="expense"] button:hover {
-  background: #c9302c;
+  background: #333;
 }
 
 .transaction-form[data-type="income"] button {
-  background: #008080; /* teal */
+  background: #000;
 }
 
 .transaction-form[data-type="income"] button:hover {
-  background: #006666;
+  background: #222;
 }
 
-/* Optional: give card border hint for type */
+/* Optional: subtle border hint for type */
 .transaction-form[data-type="expense"] {
-  border: 2px solid #d9534f;
+  border: 2px solid #111;
 }
 
 .transaction-form[data-type="income"] {
-  border: 2px solid #008080;
+  border: 2px solid #000;
 }

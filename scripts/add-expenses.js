@@ -16,7 +16,7 @@ function getCategory(form){
   return activeCategory ? activeCategory.id || activeCategory.textContent : null;
 }
 
-// Adding expenses for every add button
+
 
   contentDiv.addEventListener('click', (e) => {
     const clicked = e.target;
@@ -33,8 +33,8 @@ function getCategory(form){
     const type= typeOfClicked;
 
     if (amount < 1) {
-        alert(`${type} input should be greater than 0`); // alert
-        return; // stop further execution
+        alert(`${type} input should be greater than 0`); 
+        return; 
     }
 
     if (!amount || !category) {

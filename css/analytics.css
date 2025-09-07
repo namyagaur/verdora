@@ -4,9 +4,9 @@
   flex-direction: column;
   gap: 25px;
   padding: 25px;
-  background: #f9f9f9;
+  background: #ffffff;
   border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
   width: 100%;
   max-width: 1200px;
   margin: auto;
@@ -14,19 +14,21 @@
 
 /* Charts Card */
 .chart-card {
-  background: #ffffff;
+  background: #f9f9f9;
   border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: all 0.2s ease-in-out;
 }
 
 .chart-card h3 {
   margin-bottom: 15px;
-  color: #004d4d;
+  color: #111;
   font-weight: 600;
+  font-size: 1.2rem;
 }
 
 /* Make canvas responsive */
@@ -35,9 +37,9 @@
   height: 300px;
 }
 
-/* Optional hover effect */
+/* Hover effect */
 .chart-card:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  background: #fefefe;
 }

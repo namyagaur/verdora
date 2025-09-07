@@ -25,8 +25,8 @@ export function renderTopCategory() {
 
   if (div) {
     div.textContent = top
-      ? `🏆 Top Category: ${top[0]} (₹${top[1].toFixed(2)})`
-      : `🏆 Top Category: N/A`;
+      ? `Top Category: ${top[0]} (₹${top[1].toFixed(2)})`
+      : `Top Category: N/A`;
   }
 }
 
@@ -37,7 +37,7 @@ export function renderThisMonthExpenses() {
     .reduce((sum, exp) => sum + Number(exp.amount), 0);
 
   const el = document.querySelector('.this-month');
-  if (el) el.textContent = `📅 This Month: ₹${monthlyTotal.toFixed(2)}`;
+  if (el) el.textContent = `This Month: ₹${monthlyTotal.toFixed(2)}`;
 }
 
 export function renderAverageExpense() {
@@ -47,5 +47,5 @@ export function renderAverageExpense() {
   const avg = total / expensesTracker.length;
 
   const el = document.querySelector('.average-expense');
-  if (el) el.textContent = `📊 Average Expense: ₹${avg.toFixed(2)}`;
+  if (el) el.textContent = `Average Expense: ₹${avg.toFixed(2)}`;
 }
