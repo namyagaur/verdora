@@ -7,17 +7,20 @@
   gap: 25px;
   padding: 30px;
   width: 100%;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
   background-color: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
 }
 
 /* Page title */
 .expenses-page h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   color: #111;
-  margin-bottom: 25px;
+  margin-bottom: 15px;
+  text-align: left;
 }
 
 /* Search & filter controls */
@@ -25,52 +28,48 @@
   display: flex;
   gap: 15px;
   flex-wrap: wrap;
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 }
 
 .expenses-controls input,
 .expenses-controls select {
   padding: 14px 18px;
   border-radius: 10px;
-  border: 1px solid #aaa;
+  border: 1px solid #ddd;
   font-size: 1rem;
   flex: 1;
   background-color: #f9f9f9;
   color: #111;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.expenses-controls input:focus,
+.expenses-controls select:focus {
+  border-color: #888;
+  box-shadow: 0 0 6px rgba(0,0,0,0.1);
+  outline: none;
 }
 
 /* List of expenses */
 .expense-list {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 18px;
+  width: 100%;
 }
 
 /* Single expense item */
-.expense-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 25px 30px;
-  border-radius: 15px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  min-height: 100px;
-  gap: 30px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
 .expense-item:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
 }
 
 /* Left section */
 .expense-left {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  flex: 1;
 }
 
 .expense-amount {
@@ -81,51 +80,45 @@
 
 .expense-title {
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: #222;
 }
 
 .expense-date {
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #666;
 }
 
 /* Right section */
-.expense-right {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
 
 /* Category badge */
 .expense-category {
-  padding: 6px 16px;
+  padding: 6px 14px;
   border-radius: 20px;
   font-weight: 600;
   font-size: 0.9rem;
   color: #fff;
-  background-color: #333;
+  background-color: #444;
   white-space: nowrap;
-  flex-shrink: 0;
 }
 
 /* Category colors */
-.expense-category.food { background-color: #222; }
-.expense-category.transport { background-color: #444; }
-.expense-category.entertainment { background-color: #666; }
-.expense-category.bills { background-color: #000; }
-.expense-category.shopping { background-color: #333; }
-.expense-category.health { background-color: #555; }
-.expense-category.other { background-color: #999; }
+.expense-category.food { background-color: #e67e22; }
+.expense-category.transport { background-color: #2980b9; }
+.expense-category.entertainment { background-color: #8e44ad; }
+.expense-category.bills { background-color: #16a085; }
+.expense-category.shopping { background-color: #d35400; }
+.expense-category.health { background-color: #c0392b; }
+.expense-category.other { background-color: #7f8c8d; }
 
 /* Delete button */
 .delete-button {
   background: transparent;
   border: none;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: #d11a2a;
   cursor: pointer;
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .delete-button:hover {
@@ -139,9 +132,45 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 15px;
+    padding: 18px;
   }
 
   .expense-right {
     align-self: flex-start;
   }
+}
+/* Single expense item */
+.expense-item {
+  display: flex;
+  justify-content: space-between; /* left ek side, right ek side */
+  align-items: center;            /* vertically center */
+  padding: 20px 28px;
+  border-radius: 14px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  min-height: 90px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+  gap: 20px; /* thoda breathing space */
+}
+
+/* Left section */
+.expense-left {
+  flex: 1; /* saara bacha hua space left ko do */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  align-items: flex-start; /* left content bilkul left chipka */
+}
+
+/* Right section */
+.expense-right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-shrink: 0; /* right side chhota ho jaye but neeche na jaye */
+}
+.expense-amount{
+  color: rgb(207, 25, 25);
 }

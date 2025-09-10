@@ -1,45 +1,253 @@
-/* Analytics Page Container */
+/* ---------------- Analytics Page Container ---------------- */
 .analytics-container {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  padding: 25px;
+  gap: 30px;
+  padding: 30px;
   background: #ffffff;
-  border-radius: 15px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
   width: 100%;
   max-width: 1200px;
   margin: auto;
+  font-family: "Poppins", Arial, sans-serif;
 }
 
-/* Charts Card */
+/* ---------------- Charts Layout ---------------- */
+.charts-row {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
 .chart-card {
-  background: #f9f9f9;
-  border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  background: linear-gradient(145deg, #fdfdfd, #f7f7f7);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  transition: all 0.2s ease-in-out;
+  flex: 1 1 45%;
+  min-height: 380px;
+  transition: all 0.3s ease;
 }
 
 .chart-card h3 {
-  margin-bottom: 15px;
-  color: #111;
+  margin-bottom: 18px;
+  color: #1a1a1a;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1.35rem;
+  letter-spacing: 0.3px;
 }
 
-/* Make canvas responsive */
 .chart-card canvas {
-  max-width: 100%;
-  height: 300px;
+  width: 100% !important;
+  height: 280px !important;
 }
 
-/* Hover effect */
 .chart-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-  background: #fefefe;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #ffffff, #fdfdfd);
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 768px) {
+  .charts-row {
+    flex-direction: column;
+  }
+  .chart-card {
+    flex: 1 1 100%;
+  }
+}
+
+/* ---------------- Category Breakdown ---------------- */
+.category-breakdown {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+
+.category-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.95rem;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(240, 240, 240, 0.6);
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease;
+}
+
+.category-item:hover {
+  background: rgba(230, 230, 230, 0.85);
+}
+
+.color-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.category-name {
+  flex: 1;
+  margin-left: 6px;
+  color: #444;
+  font-weight: 500;
+}
+
+.category-amount {
+  font-weight: 600;
+  color: #111;
+}
+
+/* ---------------- Analysis Rows ---------------- */
+#analysis-pie-text {
+  margin-top: 18px;
+  padding: 12px;
+  border-top: 1px solid #eee;
+}
+
+.analysis-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 15px;
+  color: #333;
+}
+
+.analysis-category {
+  font-weight: 500;
+  text-align: left;
+}
+
+.analysis-amount {
+  font-weight: 700;
+  color: #007aff; /* iOS blue */
+  text-align: right;
+  min-width: 80px;
+}
+
+/* ---------------- Charts Global ---------------- */
+#categoryPieChart,
+#monthlyLineChart {
+  margin: 20px auto;
+  display: block;
+}
+
+#categoryPieChart {
+  max-width: 480px;
+  max-height: 480px;
+}
+
+#monthlyLineChart {
+  max-width: 780px;
+  height: 380px;
+}
+
+/* ---------------- Chart Text Styling ---------------- */
+canvas {
+  image-rendering: crisp-edges;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.chartjs-render-monitor {
+  font-family: "Poppins", Arial, sans-serif !important;
+  font-weight: 500;
+  color: #333 !important;
+}
+
+.chart-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 12px;
+}
+
+.chart-legend {
+  font-size: 14px;
+  font-weight: 500;
+  color: #555;
+}
+
+/* ---------------- Section Wrapper ---------------- */
+.chart-section {
+  padding: 25px;
+  background: linear-gradient(145deg, #fafafa, #fefefe);
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  margin: 30px auto;
+  max-width: 900px;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+.charts-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 100%; /* ensure it stretches inside container */
+}
+
+.chart-card {
+  flex: 1; /* equal flexible growth */
+  min-width: 0; /* allow shrink properly */
+  background: linear-gradient(145deg, #fdfdfd, #f7f7f7);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  min-height: 380px;
+  transition: all 0.3s ease;
+}
+
+/* Responsive: mobile par full width */
+@media (max-width: 768px) {
+  .chart-card {
+    flex: 1 1 100%;
+    width: 100%;
+  }
+}
+
+/* Chart container ko body ke width ke hisaab se bada karo */
+.chart-card {
+  flex: 1 1 48%;  /* thoda wide karega, 2 cards side by side */
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  border-radius: 16px;
+  padding: 25px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* chart center me rahe */
+  justify-content: flex-start;
+  transition: all 0.3s ease;
+  min-height: 400px;
+}
+
+/* Chart ko wrapper ke andar fix karo */
+.chart-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#categoryPieChart {
+  max-width: 320px;   /* pie chart ki fixed max size */
+  max-height: 320px;
+}
+
+#monthlyLineChart {
+  width: 100% !important;  /* line chart stretch kare */
+  max-width: 700px;
+  height: 400px !important;
 }

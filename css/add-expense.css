@@ -1,115 +1,186 @@
+/* ================= Transaction Box ================= */
 .transaction-box {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   align-items: flex-start;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 20px;
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
+/* ================= Transaction Form ================= */
 .transaction-form {
   flex: 1;
-  min-width: 300px;
-  max-width: 400px;
-  background: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-  box-sizing: border-box;
+  min-width: 320px;
+  max-width: 420px;
   display: flex;
   flex-direction: column;
   gap: 15px;
-  border: 2px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  padding: 25px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  border: 1px solid rgba(0,0,0,0.1);
+  box-sizing: border-box;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  min-height: 520px; /* enforce same height */
 }
 
+.transaction-form:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(0,0,0,0.12);
+}
+
+/* Form title */
 .transaction-form h2 {
-  color: #111;
-  margin-bottom: 10px;
-  font-size: 1.3rem;
-  font-weight: 600;
+  color: #222;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 8px;
 }
 
+/* Labels */
+.transaction-form label {
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+/* Inputs */
 .transaction-form input {
-  padding: 10px;
-  border-radius: 8px;
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 12px;
   border: 1px solid #ccc;
   font-size: 1rem;
-  background: #f9f9f9;
+  background: #fafafa;
   color: #111;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
 }
 
+.transaction-form input:focus {
+  outline: none;
+  border-color: #555;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
+
+/* Category Tabs */
 .category-tabs {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  margin-top: 5px;
 }
 
 .category-tab {
-  padding: 10px 15px;
-  background: #f5f5f5;
-  border-radius: 10px;
+  flex: 1 1 45%; /* consistent width for all tabs */
+  text-align: center;
+  padding: 10px 0;
+  border-radius: 12px;
   cursor: pointer;
   font-weight: 600;
-  display: flex;
-  align-items: center;
-  gap: 6px;
   transition: all 0.2s ease;
-  color: #222;
+  color: #333;
   border: 1px solid #ddd;
+  background: #f5f5f5;
 }
 
 .category-tab:hover {
   transform: translateY(-2px);
-  background-color: #ebebeb;
+  background-color: #eaeaea;
 }
 
 .category-tab:active {
   background-color: #dcdcdc;
 }
 
-/* Active category colors based on type */
+/* Active tab */
 .transaction-form[data-type="expense"] .category-tab.active {
-  background: #111;
+  background: #e74c3c;
   color: #fff;
+  border-color: #e74c3c;
 }
 
 .transaction-form[data-type="income"] .category-tab.active {
-  background: #000;
+  background: #27ae60;
   color: #fff;
+  border-color: #27ae60;
 }
 
+/* Buttons */
 .transaction-form button {
-  padding: 12px;
+  width: 100%;
+  padding: 14px;
   border: none;
-  font-weight: 600;
-  border-radius: 8px;
+  font-weight: 700;
+  border-radius: 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
   color: #fff;
+  font-size: 1rem;
+  margin-top: auto; /* pushes button to bottom for equal height alignment */
 }
 
-/* Buttons based on type */
+/* Button colors */
 .transaction-form[data-type="expense"] button {
-  background: #111;
+  background: linear-gradient(135deg, #e74c3c, #c0392b);
+  box-shadow: 0 4px 12px rgba(231,76,60,0.4);
 }
 
 .transaction-form[data-type="expense"] button:hover {
-  background: #333;
+  background: linear-gradient(135deg, #c0392b, #e74c3c);
+  box-shadow: 0 6px 16px rgba(231,76,60,0.5);
 }
 
 .transaction-form[data-type="income"] button {
-  background: #000;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  box-shadow: 0 4px 12px rgba(39,174,96,0.4);
 }
 
 .transaction-form[data-type="income"] button:hover {
-  background: #222;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  box-shadow: 0 6px 16px rgba(39,174,96,0.5);
 }
 
-/* Optional: subtle border hint for type */
-.transaction-form[data-type="expense"] {
-  border: 2px solid #111;
-}
-
+/* ================= Income form wider ================= */
 .transaction-form[data-type="income"] {
-  border: 2px solid #000;
+  flex: 1;              /* income gets more space */
+  
+
 }
+
+/* Income category tabs stacked vertically */
+.transaction-form[data-type="income"] .category-tabs {
+  flex-direction: column; /* stack items vertically */
+  gap: 10px;      
+    width: 100%;        /* spacing between items */
+}
+
+.transaction-form[data-type="income"] .category-tab {
+  flex: 1 1 100%;
+  text-align: center;
+ 
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .transaction-box {
+    flex-direction: column;
+    align-items: center;
+  }
+  .transaction-form {
+    max-width: 100%;
+  }
+  .transaction-form[data-type="income"] {
+    min-width: auto;  /* allow it to shrink on mobile */
+    max-width: 100%;  /* fit container */
+    flex: 1;          /* same flex as expense on small screens */
+  }
+}
+

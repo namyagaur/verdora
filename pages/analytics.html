@@ -1,12 +1,17 @@
 <div class="analytics-container card">
   <h2>Analytics</h2>
-  <div class="chart-card">
-    <h3>Spending by Category</h3>
-    <canvas id="categoryPieChart"></canvas>
-  </div>
-  <div class="chart-card">
-    <h3>Monthly Trends</h3>
-    <canvas id="monthlyLineChart"></canvas>
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Spending by Category</h3>
+      <div class="chart-wrapper">
+        <canvas id="categoryPieChart"></canvas>
+      </div>
+      <div class="analysisText" id="analysis-pie-text"></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Monthly Trends</h3>
+      <canvas id="monthlyLineChart"></canvas>
+    </div>
   </div>
 </div>
-<link rel="stylesheet" href="../css/analytics.css">

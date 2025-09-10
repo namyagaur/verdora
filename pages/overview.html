@@ -7,12 +7,23 @@
       <div class="card top-category">Top Category :</div>
     </div>
     <div class="right-portion">
-      <div class="card spending-by-category-pie">
+      <div class="analytics-container card">
+  <div class="charts-row">
+    <div class="chart-card">
+      <h3>Spending by Category</h3>
+      <div class="chart-wrapper">
         <canvas id="categoryPieChart"></canvas>
       </div>
-      <div class="card trends"><canvas id="monthlyLineChart"></canvas></div>
+      <div class="analysisText" id="analysis-pie-text"></div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Monthly Trends</h3>
+      <canvas id="monthlyLineChart"></canvas>
     </div>
   </div>
 </div>
-<link rel="stylesheet" href="../css/overview.css">
-<script src="../scripts/overview.js"></script>
+
+    </div>
+  </div>
+</div>

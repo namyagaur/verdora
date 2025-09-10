@@ -1,10 +1,11 @@
-import "../data/expenses.js"
+
 import {addToExpenses,saveToStorage,removeFromExpenses,applyFilters ,loadExpenses,expensesTracker,renderExpenses} from "../data/expenses.js";
 
 import "../scripts/add-expenses.js"
 import  "../scripts/overview.js"
 import { renderTopCategory, renderTotalExpenses, renderAverageExpense, renderThisMonthExpenses } from "../scripts/overview.js";
 import { initAnalyticsCharts } from "./analytics.js";
+import { initSettingsPage } from "./settings.js";
 
 const navItems = document.querySelectorAll('.nav-item');
 const contentDiv = document.getElementById('content');
@@ -44,6 +45,9 @@ function loadPage(name) {
                 renderTopCategory();
                 renderAverageExpense();
                 renderThisMonthExpenses();
+            }
+            if (name === "settings") {
+                initSettingsPage();
             }
             
         })

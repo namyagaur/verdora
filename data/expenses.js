@@ -1,3 +1,5 @@
+// expenses.js
+
 export let expensesTracker = [];
 
 export function loadExpenses() {
@@ -9,7 +11,6 @@ export function saveToStorage() {
   localStorage.setItem('expensesTracker', JSON.stringify(expensesTracker));
 }
 
-
 export function renderExpenses(list = expensesTracker) {
   const contentArea = document.querySelector('.expense-list');
   if (!contentArea) {
@@ -17,49 +18,44 @@ export function renderExpenses(list = expensesTracker) {
     return;
   }
 
+  const currency = JSON.parse(localStorage.getItem("settings"))?.currency || "₹";
+
   let cont = '';
-  list.forEach(exp => {
-    cont += `
-      <div class="expense-item" data-id="${exp.id}">
-        <div class="expense-left">
-          <div class="expense-amount">₹${exp.amount}</div>
-          <div class="expense-title">${exp.title}</div>
-          <div class="expense-date">${exp.date}</div>
+  if (list.length === 0) {
+    cont = "<p>No matching expenses found.</p>";
+  } else {
+    list.forEach(exp => {
+      cont += `
+        <div class="expense-item" data-id="${exp.id}">
+          <div class="expense-left">
+            <div class="expense-amount">- ${currency}${exp.amount}</div>
+            <div class="expense-title">${exp.title}</div>
+            <div class="expense-date">${exp.date}</div>
+          </div>
+          <div class="expense-right">
+            <div class="expense-category ${exp.category.toLowerCase()}">${exp.category}</div>
+            <button class="delete-button">🗑️</button>
+          </div>
         </div>
-        <div class="expense-right">
-          <div class="expense-category ${exp.category.toLowerCase()}">${exp.category}</div>
-          <button class="delete-button">🗑️</button>
-        </div>
-      </div>
-    `;
-  });
+      `;
+    });
+  }
 
-  contentArea.innerHTML = cont || "<p>No matching expenses found.</p>";
+  contentArea.innerHTML = cont;
 
-
-  const deleteButtons = document.querySelectorAll('.delete-button');
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      const expenseItem = e.target.closest('.expense-item');
-      const id = expenseItem.getAttribute('data-id');
-      if (id) {
-        removeFromExpenses(id);
-        applyFilters(); // filters ke sath re-render
-      }
+  // Delete buttons
+  contentArea.querySelectorAll('.delete-button').forEach(button => {
+    button.addEventListener('click', e => {
+      const id = e.target.closest('.expense-item')?.dataset.id;
+      if (!id) return;
+      removeFromExpenses(id);
+      applyFilters();
     });
   });
 }
 
 export function addToExpenses(id, amount, date, title, category, type) {
-  const newExpense = {
-    id,
-    amount,
-    date,
-    title,
-    category,
-    type
-  };
-  expensesTracker.push(newExpense);
+  expensesTracker.push({ id, amount, date, title, category, type });
   saveToStorage();
 }
 
@@ -68,44 +64,25 @@ export function removeFromExpenses(id) {
   saveToStorage();
 }
 
-
-
-export function filterExpenses(category) {
-  if (category === "All Categories") return expensesTracker;
-  return expensesTracker.filter(exp => exp.category === category);
-}
-
-
-export function searchExpenses(searchText) {
-  const lower = searchText.toLowerCase();
-  return expensesTracker.filter(exp => exp.title.toLowerCase().includes(lower));
-}
-
-
 export function applyFilters() {
   const searchInput = document.querySelector(".expenses-controls input");
   const categorySelect = document.querySelector(".expenses-controls select");
 
-  const searchText = searchInput ? searchInput.value.toLowerCase().trim() : "";
-  const selectedCategory = categorySelect ? categorySelect.value : "All Categories";
+  const searchText = searchInput?.value.toLowerCase().trim() || "";
+  const selectedCategory = categorySelect?.value || "All Categories";
 
-  console.log("🔍 SearchText:", `"${searchText}"`, "| Category:", selectedCategory);
+  let filtered = [...expensesTracker];
 
-  let filtered = [...expensesTracker]; // copy of all data
-
-
-  if (selectedCategory && selectedCategory !== "All Categories") {
-    filtered = filtered.filter(exp => 
-      exp.category.toLowerCase().trim() === selectedCategory.toLowerCase().trim()
-    );
+  if (selectedCategory !== "All Categories") {
+    filtered = filtered.filter(e => e.category.toLowerCase() === selectedCategory.toLowerCase());
   }
 
-
   if (searchText) {
-    filtered = filtered.filter(exp => 
-      exp.title && exp.title.toLowerCase().trim().includes(searchText)
-    );
+    filtered = filtered.filter(e => e.title.toLowerCase().includes(searchText));
   }
 
   renderExpenses(filtered);
 }
+
+// Re-render on settings change
+window.addEventListener("settingsChanged", () => renderExpenses());

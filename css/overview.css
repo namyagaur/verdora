@@ -1,0 +1,61 @@
+.overview-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.portions {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Top row: Expense summary cards */
+.left-portion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+}
+
+.left-portion .card {
+  flex: 1 1 22%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1rem;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Bottom row: Charts */
+.right-portion {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.right-portion .card {
+  flex: 1 1 48%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  padding: 1rem;
+}
+
+canvas {
+  width: 100%;
+  height: auto;
+}
+#overview-pie-text {
+  margin-top: 18px;
+  padding: 12px;
+  border-left: 1px solid #eee;
+}
