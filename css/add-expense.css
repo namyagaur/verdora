@@ -184,3 +184,12 @@
   }
 }
 
+.expense-item.income .expense-amount {
+  color: #27ae60; /* green */
+  font-weight: 700;
+}
+
+.expense-item.expense .expense-amount {
+  color: #e74c3c; /* red */
+  font-weight: 700;
+}

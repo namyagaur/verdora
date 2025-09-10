@@ -11,6 +11,10 @@ export function saveToStorage() {
   localStorage.setItem('expensesTracker', JSON.stringify(expensesTracker));
 }
 
+
+
+
+
 export function renderExpenses(list = expensesTracker) {
   const contentArea = document.querySelector('.expense-list');
   if (!contentArea) {
@@ -20,20 +24,27 @@ export function renderExpenses(list = expensesTracker) {
 
   const currency = JSON.parse(localStorage.getItem("settings"))?.currency || "₹";
 
+  // 🔑 Sort latest first
+  list.sort((a, b) => new Date(b.date) - new Date(a.date));
+
   let cont = '';
   if (list.length === 0) {
-    cont = "<p>No matching expenses found.</p>";
+    cont = "<p>No matching records found.</p>";
   } else {
-    list.forEach(exp => {
+    list.forEach(item => {
+
+      const sign = item.type === "income" ? "+" : "-";
+      const cssClass = item.type === "income" ? "income" : "expense";
+
       cont += `
-        <div class="expense-item" data-id="${exp.id}">
+        <div class="expense-item ${cssClass}" data-id="${item.id}">
           <div class="expense-left">
-            <div class="expense-amount">- ${currency}${exp.amount}</div>
-            <div class="expense-title">${exp.title}</div>
-            <div class="expense-date">${exp.date}</div>
+            <div class="expense-amount">${sign} ${currency}${item.amount}</div>
+            <div class="expense-title">${item.title}</div>
+            <div class="expense-date">${item.date}</div>
           </div>
           <div class="expense-right">
-            <div class="expense-category ${exp.category.toLowerCase()}">${exp.category}</div>
+            <div class="${item.type}-category ${item.category.toLowerCase()}">${item.category}</div>
             <button class="delete-button">🗑️</button>
           </div>
         </div>
@@ -53,6 +64,7 @@ export function renderExpenses(list = expensesTracker) {
     });
   });
 }
+
 
 export function addToExpenses(id, amount, date, title, category, type) {
   expensesTracker.push({ id, amount, date, title, category, type });

@@ -92,7 +92,7 @@
 /* Right section */
 
 /* Category badge */
-.expense-category {
+.expense-category, .income-category {
   padding: 6px 14px;
   border-radius: 20px;
   font-weight: 600;
@@ -110,6 +110,13 @@
 .expense-category.shopping { background-color: #d35400; }
 .expense-category.health { background-color: #c0392b; }
 .expense-category.other { background-color: #7f8c8d; }
+
+
+
+.income-category.salary { background-color: #0f7a0c; }
+.income-category.gift { background-color: #b92929; }
+.income-category.bonus { background-color: #954679; }
+.income-category.other { background-color: #4c4e4e; }
 
 /* Delete button */
 .delete-button {
