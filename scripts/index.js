@@ -6,17 +6,17 @@ const tabs = document.querySelectorAll(".icon-tab");
 
 function loadPage(page) {
   fetch(`${page}.html`)
-    .then(response => response.text())
-    .then(data => {
+    .then((response) => response.text())
+    .then((data) => {
       mainBody.innerHTML = data;
 
       if (page === "transactions") {
-    setTimeout(() => {  // ensure DOM fully rendered
-      initTransCategory();
-      addExpenseList();
-    }, 0);
-}
-
+        setTimeout(() => {
+          // ensure DOM fully rendered
+          initTransCategory();
+          addExpenseList();
+        }, 0);
+      }
     })
     .catch(() => {
       mainBody.innerHTML = `Error bhai, ${page}.html nahi mila`;
