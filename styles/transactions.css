@@ -1,0 +1,295 @@
+* {
+  font-family: sans-serif;
+}
+
+.transactions-box {
+  margin: 20px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+  width: 400px;
+  height: fit-content;
+}
+/* Add-transactions */
+.tb-title {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.plus-sign {
+  color: purple;
+  font-size: 24px;
+  font-weight: 800;
+}
+.tb-heading {
+  font-size: 18px;
+  color: rgb(0, 0, 0);
+  font-family: sans-serif;
+}
+
+/* nav-tabs */
+.tb-nav {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  word-wrap: wrap;
+}
+.nav-item {
+  width: 100%;
+  border-radius: 4px;
+  padding: 4px;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 14px;
+  font-family: sans-serif;
+  gap: 4px;
+  transition: 0.2s ease-in-out;
+}
+
+/* Active nav item general style */
+.nav-item.active {
+  color: white;
+}
+
+.nav-item.active svg {
+  stroke: white;
+}
+
+/* Individual active backgrounds */
+#expense.active {
+  background: linear-gradient(45deg, rgb(228, 158, 242), rgb(247, 179, 179));
+}
+
+#income.active {
+  background: linear-gradient(45deg, rgb(201, 234, 184), rgb(71, 212, 31));
+}
+
+#savings.active {
+  background: linear-gradient(45deg, rgb(146, 192, 208), rgb(140, 139, 243));
+}
+
+#balance.active {
+  background: linear-gradient(45deg, rgb(231, 160, 245), rgb(182, 143, 178));
+}
+
+.nav-img {
+  width: 18px;
+  height: 18px;
+}
+.nav-img img {
+  width: 80%;
+  height: 80%;
+}
+
+.nav-item:hover {
+  cursor: pointer;
+  transform: scale3d(1.1, 1.1, 1.1);
+}
+
+/* Amount intake */
+.adding-amount,
+.description,
+.date,
+.category {
+  margin-top: 30px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.aa-title,
+.description-title,
+.date-title,
+.category-title {
+  font-size: 14px;
+  font-weight: 600;
+}
+.aa-amount-input input {
+  border: none;
+  font-size: 16px;
+}
+.aa-amount-input label {
+  color: gray;
+}
+
+/* description */
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.description input {
+  width: 60%;
+  font-size: 16px;
+  border: none;
+}
+
+/* pick a date */
+
+.date-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.date input {
+  color: gray;
+  border: none;
+  width: 40%;
+}
+.date label img {
+  width: 20px;
+  height: 20px;
+}
+
+/* Categories */
+
+.ct-image {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ct-image img {
+  width: 60%;
+  height: 60%;
+}
+
+.category-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+.category-tabs {
+  padding: 4px 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  border-radius: 10px;
+  color: rgba(0, 0, 0, 0.7);
+  transition: 0.3s ease-in-out;
+}
+
+.category-tabs:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  cursor: pointer;
+}
+
+#food .ct-image {
+  background-color: rgb(255, 202, 132);
+}
+#transport .ct-image {
+  background-color: rgb(168, 216, 248);
+}
+#shopping .ct-image {
+  background-color: rgb(239, 194, 211);
+}
+#entertainment .ct-image {
+  background-color: rgb(142, 132, 255);
+}
+#bills .ct-image {
+  background-color: rgb(237, 141, 239);
+}
+#coffee .ct-image {
+  background-color: rgb(220, 210, 164);
+}
+#others .ct-image {
+  background-color: rgb(237, 173, 173);
+}
+/*  */
+#salary .ct-image {
+  background-color: rgb(111, 155, 122);
+}
+#freelance .ct-image {
+  background-color: rgb(164, 212, 220);
+}
+#bonus .ct-image {
+  background-color: rgb(245, 252, 41);
+}
+
+/*  */
+#emergency .ct-image {
+  background-color: rgb(252, 223, 223);
+}
+#wishlist-funds .ct-image {
+  background-color: rgb(252, 226, 240);
+}
+
+/*  */
+#cash .ct-image {
+  background-color: rgb(229, 250, 107);
+}
+#bank .ct-image {
+  background-color: rgb(255, 241, 201);
+}
+/*  */
+
+/* active categories */
+
+.category-tabs.active {
+  background: linear-gradient(
+    90deg,
+    rgb(155, 155, 233),
+    rgb(139, 139, 247),
+    rgb(250, 112, 250)
+  );
+  color: white;
+}
+
+/* add expense */
+
+.input-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+}
+.input-tab {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  /* font-weight: 600; */
+  /* border: rgb(201, 195, 195) solid; */
+  border-radius: 10px;
+  width: 60%;
+  height: 20px;
+  padding: 10px;
+  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); */
+  transition: 0.3s ease-in-out;
+}
+
+.input-tab:hover {
+  transform: scale3d(1.1, 1.1, 1.1);
+  cursor: pointer;
+}
+
+#expense-input {
+  background: linear-gradient(45deg, rgb(228, 158, 242), rgb(247, 179, 179));
+  color: white;
+}
+#income-input {
+  background: linear-gradient(45deg, rgb(201, 234, 184), rgb(71, 212, 31));
+  color: white;
+}
+#savings-input {
+  background: linear-gradient(45deg, rgb(146, 192, 208), rgb(140, 139, 243));
+  color: white;
+}
+#balance-input {
+  background: linear-gradient(45deg, rgb(231, 160, 245), rgb(182, 143, 178));
+  color: white;
+}
+.transactions-box {
+    height: auto; /* ya min-height: 300px; */
+    overflow: visible;
+}

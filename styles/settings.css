@@ -1,0 +1,119 @@
+.settings-title-desc {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.s-title {
+  font-size: 24px;
+  font-weight: 600;
+  background: linear-gradient(90deg, rgb(183, 42, 164), rgb(142, 31, 176));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 10px;
+}
+.s-desc {
+  font-size: 15px;
+  color: grey;
+}
+
+/* profile */
+
+.profile {
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  padding: 13px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+}
+
+.profile-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 7px;
+  color: rgba(0, 0, 0, 0.8);
+}
+.profile-svg svg {
+  width: 22px;
+  stroke: purple;
+}
+
+.member-details {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.profile-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 75px;
+  height: 75px;
+  border-radius: 40px;
+  background: linear-gradient(
+    90deg,
+    rgb(155, 155, 233),
+    rgb(139, 139, 247),
+    rgb(250, 112, 250)
+  );
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.profile-name {
+  font-size: 17px;
+  font-weight: 600;
+}
+.profile-date {
+  font-size: 14px;
+  color: grey;
+}
+
+.pro-member {
+  border: rgb(244, 149, 254) solid 0.5px;
+  border-radius: 4px;
+  font-size: 13px;
+  width: fit-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: rgb(250, 237, 253);
+  color: purple;
+  font-weight: 600;
+}
+
+/* email mail */
+
+.member-email, .member-phone {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+.me-title , .mp-title{
+  font-size: 14px;
+  font-weight: 600;
+}
+.me-email-wrapper, .mp-phone-wrapper {
+    margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+.email-svg svg, .phone-svg svg{
+  width: 16px;
+  stroke: grey;
+}
+.me-email, .mp-phone{
+font-size: 15px;
+}
