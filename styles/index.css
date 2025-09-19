@@ -3,6 +3,8 @@
   margin-top: 0;
   font-family: sans-serif;
 }
+
+
 .top-nav {
   display: flex;
   justify-content: space-between;
@@ -103,3 +105,14 @@
 
 }
 
+.main-body {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-around; */
+  align-items: center;
+  height: 1000vh;
+  margin-top: 100px;
+  background: linear-gradient(145deg, white, rgb(209, 209, 246));
+  width: 100%;
+  
+}

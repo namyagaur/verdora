@@ -1,5 +1,5 @@
 import { initTransCategory } from "./transactions.js";
-import { addExpenseList } from "../data/expense.js";
+import { renderList,addExpenseList } from "../data/expense.js";
 
 const mainBody = document.querySelector(".main-body");
 const tabs = document.querySelectorAll(".icon-tab");
@@ -17,6 +17,11 @@ function loadPage(page) {
           addExpenseList();
         }, 0);
       }
+      if (page === "expenseList") {
+        setTimeout(() => {
+          renderList();
+        }, 0);
+      }
     })
     .catch(() => {
       mainBody.innerHTML = `Error bhai, ${page}.html nahi mila`;
@@ -24,7 +29,7 @@ function loadPage(page) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("transactions"); // default load
+  loadPage("expenseList"); // default load
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
