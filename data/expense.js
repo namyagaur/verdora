@@ -1,12 +1,15 @@
+import { currentBalanceUpdate, totalBalanceUpdate } from "./balance.js";
+
 export const expenseList = loadList("expenseList") || [];
 export const balanceList = loadList("balanceList") || [];
 export const savingsList = loadList("savingsList") || [];
 export const eiTracker = loadList("eiTracker") || [];
 
-function loadList(list) {
-  return JSON.parse(localStorage.getItem(list));
+export function loadList(list) {
+  return JSON.parse(localStorage.getItem(list)) || [];
 }
-function saveList(key, value) {
+
+export function saveList(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
@@ -17,6 +20,7 @@ export function addExpenseList() {
     const amountInput = document.getElementById("amount");
     const titleInput = document.getElementById("desc");
     const dateInput = document.getElementById("date");
+
     ib.addEventListener("click", () => {
       const finalAmount = amountInput.value;
       const finalTitle = titleInput.value;
@@ -25,97 +29,164 @@ export function addExpenseList() {
 
       const selectedCategory = document.querySelector(
         ".category-tabs.active"
-      ).id;
+      )?.id;
 
       if (!finalAmount || !finalTitle || !finalDate || !selectedCategory) {
         alert("Fill up All Details");
         return;
       }
 
+      const id = `${Date.now()}-${Math.floor(Math.random() * 1000)}`;
+
       const item = {
-        id: `${Date.now()}-${finalDate}`,
+        id,
         amount: finalAmount,
         title: finalTitle,
         date: finalDate,
         category: selectedCategory,
       };
-      const eiItem = {
-        id: `${Date.now()}-${finalDate}`,
-        amount: finalAmount,
-        title: finalTitle,
-        date: finalDate,
-        category: selectedCategory,
-        type: activeNav,
-      };
+      const eiItem = { ...item, type: activeNav };
 
       if (activeNav === "expense") {
         expenseList.push(item);
         eiTracker.push(eiItem);
-        saveList("eiTracker", eiTracker);
         saveList("expenseList", expenseList);
+        saveList("eiTracker", eiTracker);
+        updateExpenseInsights();
       }
+
       if (activeNav === "balance") {
         balanceList.push(item);
-        saveList("balanceList", balanceList);
         eiTracker.push(eiItem);
+        saveList("balanceList", balanceList);
         saveList("eiTracker", eiTracker);
+        updateBalanceInsights();
       }
+
       if (activeNav === "savings") {
         savingsList.push(item);
         saveList("savingsList", savingsList);
+        currentsavingsUpdate();
       }
 
-      // CLEAR INPUTS
+      // Clear inputs
       amountInput.value = "";
       titleInput.value = "";
       dateInput.value = "";
       document
         .querySelectorAll(".category-tabs")
         .forEach((g) => g.classList.remove("active"));
+
+      renderList(); // render updated list
     });
   });
 }
 
+// Render list and use event delegation for delete buttons
 export function renderList() {
-
- 
   const contentDiv = document.querySelector(".ei-list");
-  let html = "";
-   if(eiTracker.length===0){
-    html = "No Expense Yet :) "
-    contentDiv.innerHTML = html;
+  if (!contentDiv) return;
+
+  if (eiTracker.length === 0) {
+    contentDiv.innerHTML = "No Expense Yet :)";
     return;
   }
-  eiTracker.forEach((ei) => {
-    const isSign = ei.type === "expense" ? "-" : "+";
 
-    html += `<div class="item-wrapper">
-    <div class="item-info">
-      <div class="item-name">${ei.title}</div>
-      <div class="icd-wrapper">
-        <div class="item-category">${ei.category}</div>
-        <div class="item-date">${ei.date}</div>
-      </div>
-    </div>
-    <div class="item-amount-edit">
-      <div class="item-amount" id="${ei.type}-part">${isSign} ₹${ei.amount}</div>
-      <div class="item-delete" 
-      id="${ei.id}" >🗑️</div>
-    </div>
-  </div>`;
-  });
+  let html = eiTracker
+    .map((ei) => {
+      const isSign = ei.type === "expense" ? "-" : "+";
+      return `
+      <div class="item-wrapper">
+        <div class="item-info">
+          <div class="item-name">${ei.title}</div>
+          <div class="icd-wrapper">
+            <div class="item-category">${ei.category}</div>
+            <div class="item-date">${ei.date}</div>
+          </div>
+        </div>
+        <div class="item-amount-edit">
+          <div class="item-amount" id="${ei.type}-part">${isSign} ₹${ei.amount}</div>
+          <div class="item-delete" data-id="${ei.id}">🗑️</div>
+        </div>
+      </div>`;
+    })
+    .join("");
 
   contentDiv.innerHTML = html;
-  const deleteBtns = document.querySelectorAll(".item-delete");
-  deleteBtns.forEach((button) => {
-    button.addEventListener("click", () => {
-      const btnid = button.id;
-      const newList = eiTracker.filter((p) => p.id !== btnid);
+}
 
-      eiTracker.length = 0;
-      eiTracker.push(...newList);
-      saveList("eiTracker", eiTracker);
-      renderList();
-    });
-  });
+// Event delegation for delete buttons
+document.addEventListener("click", (e) => {
+  if (e.target.classList.contains("item-delete")) {
+    const btnid = e.target.dataset.id;
+    handleDelete(btnid);
+  }
+});
+
+function handleDelete(btnid) {
+  const deletedItem = eiTracker.find((p) => p.id === btnid);
+  if (!deletedItem) return;
+
+  // Remove from eiTracker
+  eiTracker.splice(
+    eiTracker.findIndex((p) => p.id === btnid),
+    1
+  );
+  saveList("eiTracker", eiTracker);
+
+  // Remove from respective lists
+  if (deletedItem.type === "expense") {
+    const index = expenseList.findIndex((p) => p.id === btnid);
+    if (index > -1) expenseList.splice(index, 1);
+    saveList("expenseList", expenseList);
+    updateExpenseInsights();
+  }
+
+  if (deletedItem.type === "balance") {
+    const index = balanceList.findIndex((p) => p.id === btnid);
+    if (index > -1) balanceList.splice(index, 1);
+    saveList("balanceList", balanceList);
+    updateBalanceInsights();
+  }
+
+  if (deletedItem.type === "savings") {
+    const index = savingsList.findIndex((p) => p.id === btnid);
+    if (index > -1) savingsList.splice(index, 1);
+    saveList("savingsList", savingsList);
+    currentsavingsUpdate();
+  }
+
+  renderList(); // refresh UI
+}
+
+// Update functions
+export function currentExpenseUpdate() {
+  let total = expenseList.reduce((sum, item) => sum + Number(item.amount), 0);
+  const div = document.querySelector(".expense-insights");
+  if (div) div.textContent = `₹${total}`;
+}
+
+export function totalExpenseUpdate() {
+  let total = eiTracker
+    .filter((i) => i.type === "expense")
+    .reduce((sum, item) => sum + Number(item.amount), 0);
+  const div = document.querySelector(".hi-total-expense");
+  if (div) div.textContent = `₹${total}`;
+}
+
+function updateExpenseInsights() {
+  currentExpenseUpdate();
+  totalExpenseUpdate();
+}
+
+export function updateBalanceInsights() {
+  let total = balanceList.reduce((sum, item) => sum + Number(item.amount), 0);
+  const divCurrent = document.querySelector(".current-balance");
+  if (divCurrent) divCurrent.textContent = `₹${total}`;
+
+  let totalEi = eiTracker
+    .filter((i) => i.type === "balance")
+    .reduce((sum, item) => sum + Number(item.amount), 0);
+  const divTotal = document.querySelector(".hi-total-income");
+  if (divTotal) divTotal.textContent = `₹${totalEi}`;
 }

@@ -1,5 +1,13 @@
 import { initTransCategory } from "./transactions.js";
-import { renderList,addExpenseList } from "../data/expense.js";
+import {
+  renderList,
+  addExpenseList,
+  currentExpenseUpdate,
+  totalExpenseUpdate,
+} from "../data/expense.js";
+import { addToWishlist, renderWishList } from "../data/wishlist.js";
+import { currentBalanceUpdate, totalBalanceUpdate } from "../data/balance.js";
+import { currentsavingsUpdate } from "../data/savings.js";
 
 const mainBody = document.querySelector(".main-body");
 const tabs = document.querySelectorAll(".icon-tab");
@@ -20,7 +28,21 @@ function loadPage(page) {
       if (page === "expenseList") {
         setTimeout(() => {
           renderList();
+          totalBalanceUpdate();
+          totalExpenseUpdate();
         }, 0);
+      }
+      if (page === "dashboard") {
+        setTimeout(() => {
+          currentBalanceUpdate();
+          currentExpenseUpdate();
+          currentsavingsUpdate();
+        }, 0);
+      }
+      if (page === "wishlist") {
+        addToWishlist();
+        renderWishList();
+        // renderWishList();
       }
     })
     .catch(() => {
@@ -29,7 +51,7 @@ function loadPage(page) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("expenseList"); // default load
+  loadPage("wishlist"); // default load
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
