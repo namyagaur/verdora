@@ -279,7 +279,10 @@ body {
 }
 
 .setting-text-group {
+  width: 100%;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -575,4 +578,16 @@ body[data-theme="minimal-mode"] .color-theme[data-theme="minimal-mode"].active {
 
 .heart-verdora img{
   width: 150px;
+}
+.setting-text-content{
+  display: flex;
+  flex-direction: row;
+}
+.noti-sub{
+  width: 100%;
+  font-size: 14px;
+  color: grey;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }

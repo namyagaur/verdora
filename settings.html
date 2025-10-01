@@ -43,16 +43,19 @@
 
       <div class="setting-row toggle-row">
         <div class="setting-text-group">
-          <i class="fas fa-sun icon"></i>
+          
           <div class="text-content">
             <span>Dark Mode</span>
             <p>Switch to dark theme</p>
           </div>
+          <div class="dm-switch">
+            <label class="switch">
+              <input type="checkbox" id="dark-mode-toggle" />
+              <span class="slider round"></span>
+            </label>
+
+          </div>
         </div>
-        <label class="switch">
-          <input type="checkbox" id="dark-mode-toggle" />
-          <span class="slider round"></span>
-        </label>
       </div>
 
       <hr class="divider" />
@@ -62,7 +65,8 @@
 
         <div class="setting-row color-theme active" data-theme="gradient-vibes">
           <div class="color-indicator gradient-indicator"></div>
-          <span>Gradient Vibes</span>        </div>
+          <span>Gradient Vibes</span>
+        </div>
 
         <div class="setting-row color-theme" data-theme="ocean-breeze">
           <div class="color-indicator ocean-indicator"></div>
@@ -94,35 +98,47 @@
 
       <div class="setting-row toggle-row">
         <div class="setting-text-group">
-          <span>Push Notifications</span>
-          <p>Receive notifications on your device</p>
+          <div class="settings-text-content">
+            <div>Push Notifications</div>
+            <div class="noti-sub">Receive notifications on your device</div>
+          </div>
+          <div class="settings-switch">
+            <label class="switch">
+              <input type="checkbox" checked />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-        <label class="switch">
-          <input type="checkbox" checked />
-          <span class="slider round"></span>
-        </label>
       </div>
 
       <div class="setting-row toggle-row">
         <div class="setting-text-group">
-          <span>Goal Reminders</span>
-          <p>Get reminded about your savings goals</p>
+          <div class="settings-text-content">
+            <div>Goal Reminders</div>
+            <div class="noti-sub">Get reminded about your savings goals</div>
+          </div>
+          <div class="settings-switch">
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label>
       </div>
 
       <div class="setting-row toggle-row">
         <div class="setting-text-group">
-          <span>Monthly Reports</span>
-          <p>Receive monthly spending summaries</p>
+          <div class="settings-text-content">
+            <div>Monthly Reports</div>
+            <div class="noti-sub">Receive monthly spending summaries</div>
+          </div>
+          <div class="settings-switch">
+            <label class="switch">
+              <input type="checkbox" />
+              <span class="slider round"></span>
+            </label>
+          </div>
         </div>
-        <label class="switch">
-          <input type="checkbox" />
-          <span class="slider round"></span>
-        </label>
       </div>
     </section>
 
@@ -144,7 +160,7 @@
     </section>
 
     <section class="card about-card">
-      <div class="heart-verdora"><img src="img/heartie.png" alt=""></div>
+      <div class="heart-verdora"><img src="img/heartie.png" alt="" /></div>
       <h2>Verdora v2.1.0</h2>
       <p class="tagline">Made with love for Gen Z finances</p>
       <div class="about-links">
