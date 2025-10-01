@@ -152,9 +152,8 @@ h3 {
 .income-only:hover,
 .expense-only:hover {
   cursor: pointer;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-border-radius: 10px;
-
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
 }
 .income-only.active {
   background: linear-gradient(90deg, rgb(188, 234, 188), rgb(107, 239, 107));
@@ -169,7 +168,7 @@ border-radius: 10px;
 .ei-list {
   display: flex;
   flex-direction: column;
-  margin-top: 60px;
+  margin-top: 40px;
   width: 100%;
   justify-content: center;
   align-items: center;
@@ -190,10 +189,11 @@ border-radius: 10px;
 .item-info {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 5px;
 }
 .item-name {
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 600;
 }
 .icd-wrapper {
   display: flex;
@@ -207,7 +207,7 @@ border-radius: 10px;
   padding-left: 7px;
   padding-right: 7px;
   border-radius: 7px;
-  border: solid brown;
+
   color: brown;
   background-color: bisque;
 }
@@ -216,7 +216,7 @@ border-radius: 10px;
   color: gray;
 }
 .item-amount {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 600;
 }
 
@@ -232,61 +232,103 @@ border-radius: 10px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
-}
 
+  gap: 10px;
+}
+.item-category {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: rgb(0, 0, 0);
+  padding: 2px 6px;
+  border-radius: 7px;
+  background-color: rgb(227, 225, 225);
+}
 .item-delete:hover {
   cursor: pointer;
 }
 .item-category.food {
-  border: solid rgb(200, 30, 30);
   color: rgb(200, 30, 30);
   background-color: rgb(255, 220, 220); /* soft red */
 }
 
 .item-category.bills {
-  border: solid rgb(204, 102, 0);
   color: rgb(204, 102, 0);
   background-color: rgb(255, 235, 210); /* warm beige/orange */
 }
 
 .item-category.entertainment {
-  border: solid rgb(34, 153, 84);
   color: rgb(34, 153, 84);
   background-color: rgb(220, 245, 230); /* mint green */
 }
 
 .item-category.shopping {
-  border: solid rgb(125, 60, 152);
   color: rgb(125, 60, 152);
   background-color: rgb(235, 220, 245); /* lavender */
 }
 
 .item-category.transport {
-  border: solid rgb(50, 42, 165);
   color: rgb(50, 42, 165);
   background-color: rgb(196, 212, 255); /* pastel blue */
 }
 
 .item-category.coffee {
-  border: solid rgb(111, 78, 55);
   color: rgb(111, 78, 55);
   background-color: rgb(235, 220, 210); /* latte beige */
 }
 .item-category.cash {
-  border: solid rgb(0, 128, 96);
   color: rgb(0, 128, 96);
   background-color: rgb(210, 245, 235); /* soft teal */
 }
 
 .item-category.bank {
-  border: solid rgb(123, 36, 28);
   color: rgb(123, 36, 28);
   background-color: rgb(245, 225, 220); /* light brick */
 }
 
 .item-category.others {
-  border: solid rgb(90, 90, 90);
   color: rgb(90, 90, 90);
   background-color: rgb(230, 230, 230); /* neutral gray */
+}
+
+/*  */
+.history-arrangement {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+  align-items: center;
+}
+.ha-left {
+  font-size: 14px;
+  color: rgb(100, 99, 99);
+}
+.ha-right {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  color: rgb(138, 138, 138);
+}
+.ha-right-date {
+  border-radius: 8px;
+  background-color: white;
+  padding: 2px 12px;
+  gap: 8px;
+  display: flex;
+  font-size: 14px;
+  justify-content: space-between;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+}
+.ha-right-date:hover, .ha-right-amount:hover{
+  cursor: pointer;
+}
+.ha-right-amount {
+  gap: 8px;
+  font-size: 14px;
+  display: flex;
+  padding: 2px 12px;
+  border-radius: 8px;
+  background-color: white;
+  justify-content: space-between;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }

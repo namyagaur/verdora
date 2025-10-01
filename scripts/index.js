@@ -6,6 +6,8 @@ import {
   updateExpenseInsights,
   expenseList,
   renderRecentTransactions,
+  updateTransactionCount,
+  initSortListeners,
 } from "../data/expense.js";
 import { addToWishlist, initWishlistToggle, renderWishList } from "../data/wishlist.js";
 import { currentsavingsUpdate } from "../data/savings.js";
@@ -35,6 +37,9 @@ function loadPage(page) {
           updateBalanceInsights();
           updateExpenseInsights();
           initFilters();
+          updateTransactionCount();
+          initSortListeners();
+          
         }, 0);
       }
       if (page === "dashboard") {
@@ -68,7 +73,7 @@ function loadPage(page) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("wishlist"); // default load
+  loadPage("expenseList"); // default load
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
