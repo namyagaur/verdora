@@ -10,6 +10,11 @@
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
   width: 400px;
   height: fit-content;
+  margin: 20px;
+  /* BACKGROUND: Use card background variable */
+  background-color: var(--color-card-background);
+
+  /* Adjust box-shadow for better dark mode compatibility (or keep as is) */
 }
 /* Add-transactions */
 .tb-title {
@@ -18,13 +23,13 @@
   align-items: center;
 }
 .plus-sign {
-  color: purple;
+  color: var(--color-primary);
   font-size: 24px;
   font-weight: 800;
 }
 .tb-heading {
   font-size: 18px;
-  color: rgb(0, 0, 0);
+  color: var(--color-text-dark);
   font-family: sans-serif;
 }
 
@@ -53,26 +58,36 @@
 
 /* Active nav item general style */
 
-
 .nav-item.active svg {
   stroke: white;
 }
 
 /* Individual active backgrounds */
 #expense.active {
-  background: linear-gradient(45deg, rgb(228, 158, 242), rgb(247, 179, 179));
-}
-
-#income.active {
-  background: linear-gradient(45deg, rgb(201, 234, 184), rgb(71, 212, 31));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
 }
 
 #savings.active {
-  background: linear-gradient(45deg, rgb(146, 192, 208), rgb(140, 139, 243));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
 }
 
 #balance.active {
-  background: linear-gradient(45deg, rgb(231, 160, 245), rgb(182, 143, 178));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
 }
 
 .nav-img {
@@ -106,13 +121,14 @@
 .category-title {
   font-size: 14px;
   font-weight: 600;
+  color: var(--color-text-dark);
 }
 .aa-amount-input input {
   border: none;
   font-size: 16px;
 }
 .aa-amount-input label {
-  color: gray;
+  color: var(--color-text-medium);
 }
 
 /* description */
@@ -137,7 +153,7 @@
   align-items: center;
 }
 .date input {
-  color: gray;
+  color: var(--color-text-medium);
   border: none;
   width: 40%;
 }
@@ -173,7 +189,7 @@
   gap: 6px;
   font-size: 15px;
   border-radius: 10px;
-  color: rgba(0, 0, 0, 0.7);
+  color: var(--color-text-dark);
   transition: 0.3s ease-in-out;
 }
 
@@ -236,9 +252,9 @@
 .category-tabs.active {
   background: linear-gradient(
     90deg,
-    rgb(155, 155, 233),
-    rgb(139, 139, 247),
-    rgb(250, 112, 250)
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
   );
   color: white;
 }
@@ -264,6 +280,7 @@
   padding: 10px;
   /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); */
   transition: 0.3s ease-in-out;
+  color: white;
 }
 
 .input-tab:hover {
@@ -272,23 +289,66 @@
 }
 
 #expense-input {
-  background: linear-gradient(45deg, rgb(228, 158, 242), rgb(247, 179, 179));
-  color: white;
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
 }
-#income-input {
-  background: linear-gradient(45deg, rgb(201, 234, 184), rgb(71, 212, 31));
-  color: white;
-}
+
 #savings-input {
-  background: linear-gradient(45deg, rgb(146, 192, 208), rgb(140, 139, 243));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
   color: white;
 }
 #balance-input {
-  background: linear-gradient(45deg, rgb(231, 160, 245), rgb(182, 143, 178));
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
   color: white;
 }
 .transactions-box {
-    height: auto; /* ya min-height: 300px; */
-    overflow: visible;
+  height: auto; /* ya min-height: 300px; */
+  overflow: visible;
+}
+/* Add to transactions.css */
+
+body.dark-mode .transactions-box {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.05);
 }
 
+body.dark-mode .aa-amount-input input,
+body.dark-mode .description input,
+body.dark-mode .date input {
+    /* Inputs should be transparent to blend with the card background, but text readable */
+    background-color: transparent !important;
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .aa-amount-input label {
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .category-tabs {
+    background-color: #383838 !important; /* Non-active categories stand out */
+    color: var(--color-text-medium) !important;
+}
+
+/* Mute the vibrant category image backgrounds */
+body.dark-mode .ct-image {
+    opacity: 0.7;
+}
+
+body.dark-mode #food .ct-image {
+    background-color: rgb(200, 152, 82) !important;
+}
+/* ... apply muted background to all other category images ... */

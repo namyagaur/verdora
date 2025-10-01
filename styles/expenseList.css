@@ -332,3 +332,76 @@ h3 {
   justify-content: space-between;
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
+/* Add to expenseList.css */
+
+body.dark-mode .filter-and-search {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05);
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .search-text input {
+    background-color: #383838 !important;
+    border: 1px solid var(--color-border) !important;
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .option-selector select {
+    background-color: var(--color-card-background) !important;
+    color: var(--color-text-dark) !important;
+}
+
+/* History Insights */
+body.dark-mode .hi-income {
+    background: linear-gradient(90deg, #58b658, #358d35) !important; /* Darker, high-contrast green */
+}
+
+body.dark-mode .hi-expense {
+    background: linear-gradient(90deg, #b65858, #8d3535) !important; /* Darker, high-contrast red */
+}
+
+/* Item List */
+body.dark-mode .item-wrapper {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .item-name,
+body.dark-mode .item-amount {
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .item-date {
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode #expense-part {
+    color: var(--color-danger-soft) !important;
+}
+
+body.dark-mode #balance-part {
+    color: var(--color-success) !important;
+}
+
+/* Filter buttons */
+body.dark-mode .ha-right-date,
+body.dark-mode .ha-right-amount {
+    background-color: #383838 !important; 
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.05);
+    color: var(--color-text-medium) !important;
+}
+
+/* Detailed Category Overrides */
+body.dark-mode .item-category {
+    background-color: #383838 !important;
+    color: var(--color-text-medium) !important;
+}
+body.dark-mode .item-category.food {
+    color: var(--color-danger-soft) !important;
+    background-color: rgba(255, 138, 128, 0.2) !important;
+}
+body.dark-mode .item-category.cash {
+    color: #8be0b7 !important;
+    background-color: rgba(139, 224, 183, 0.2) !important;
+}
+/* ... apply muted background and bright color to all specific categories ... */

@@ -33,10 +33,10 @@ h3 {
   width: 100%; /* thoda chhota for center */
   padding: 10px;
   border-radius: 20px;
-  background: linear-gradient(145deg, #6a4bff, #a050ff, rgb(36, 170, 188));
-  color: white;
   text-align: center; /* text center */
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(145deg, var(--color-gradient-start), var(--color-primary), var(--color-ocean));
+  color: white;
 }
 
 .current-balance {
@@ -101,6 +101,8 @@ h3 {
   padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(29, 2, 2, 0.13);
+  background-color: var(--color-card-background);
+  box-shadow: 0px 4px 10px rgba(29, 2, 2, 0.13);
 }
 
 .image-expense,
@@ -125,18 +127,17 @@ h3 {
 .expense-text,
 .savings-text {
   padding-top: 5px;
-  color: gray;
   font-family: sans-serif;
+   color: var(--color-text-medium);
 }
 
 .income-insights,
 .expense-insights,
 .savings-insights {
-  color: gray;
   font-family: sans-serif;
   font-size: 22px;
-  color: green;
   font-weight: 600;
+  color: var(--color-success);
 }
 .expense-insights {
   color: rgb(170, 28, 28);
@@ -182,9 +183,7 @@ h3 {
   width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: white;
-  margin-top: 30px;
-  background-color: white;
+  background-color: var(--color-card-background);  margin-top: 30px;
   padding: 20px;
   border-radius: 15px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -245,8 +244,77 @@ h3 {
 .recent-amount.expense{
   color: red;
   font-weight: 700;
+  
 }
 .recent-amount.balance{
   font-weight: 700;
   color: rgb(56, 168, 56);
+}
+
+/* Add to dashboard.css */
+
+body.dark-mode body {
+    background-color: var(--color-background-light) !important;
+}
+
+body.dark-mode .balance-card {
+    /* Gradients will respect the theme, but text must be readable */
+    color: var(--color-text-dark) !important; 
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.15); /* Stronger shadow for the main card */
+}
+
+body.dark-mode .expense-card,
+body.dark-mode .expense-index,
+body.dark-mode .savings-index {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .income-text,
+body.dark-mode .expense-text,
+body.dark-mode .savings-text {
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .expense-insights {
+    color: var(--color-danger-soft) !important;
+}
+
+body.dark-mode .savings-insights {
+    color: #72aeff !important; /* Brighter blue for savings */
+}
+
+/* Recent transactions */
+body.dark-mode .rt-cont {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .recent-description-title {
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .recent-item-date {
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .recent-item-category {
+    background-color: #383838 !important; 
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .recent-amount.expense {
+    color: var(--color-danger-soft) !important;
+}
+
+body.dark-mode .recent-amount.balance {
+    color: var(--color-success) !important;
+}
+
+/* Image background overrides for visual balance */
+body.dark-mode .image-expense {
+    background-color: rgba(255, 138, 128, 0.2) !important; 
+}
+body.dark-mode .image-savings {
+    background-color: rgba(114, 174, 255, 0.2) !important;
 }
