@@ -11,12 +11,9 @@
   width: 400px;
   height: fit-content;
   margin: 20px;
-  /* BACKGROUND: Use card background variable */
   background-color: var(--color-card-background);
 
-  /* Adjust box-shadow for better dark mode compatibility (or keep as is) */
 }
-/* Add-transactions */
 .tb-title {
   display: flex;
   gap: 10px;
@@ -33,7 +30,6 @@
   font-family: sans-serif;
 }
 
-/* nav-tabs */
 .tb-nav {
   margin-top: 20px;
   display: flex;
@@ -56,13 +52,11 @@
   transition: 0.2s ease-in-out;
 }
 
-/* Active nav item general style */
 
 .nav-item.active svg {
   stroke: white;
 }
 
-/* Individual active backgrounds */
 #expense.active {
   background: linear-gradient(
     90deg,
@@ -104,7 +98,6 @@
   transform: scale3d(1.1, 1.1, 1.1);
 }
 
-/* Amount intake */
 .adding-amount,
 .description,
 .date,
@@ -131,7 +124,6 @@
   color: var(--color-text-medium);
 }
 
-/* description */
 
 .description {
   display: flex;
@@ -145,7 +137,6 @@
   border: none;
 }
 
-/* pick a date */
 
 .date-wrapper {
   display: flex;
@@ -162,7 +153,6 @@
   height: 20px;
 }
 
-/* Categories */
 
 .ct-image {
   width: 30px;
@@ -238,16 +228,12 @@
   background-color: rgb(252, 226, 240);
 }
 
-/*  */
 #cash .ct-image {
   background-color: rgb(229, 250, 107);
 }
 #bank .ct-image {
   background-color: rgb(255, 241, 201);
 }
-/*  */
-
-/* active categories */
 
 .category-tabs.active {
   background: linear-gradient(
@@ -259,7 +245,6 @@
   color: white;
 }
 
-/* add expense */
 
 .input-section {
   display: flex;
@@ -272,13 +257,12 @@
   justify-content: center;
   align-items: center;
   font-size: 20px;
-  /* font-weight: 600; */
-  /* border: rgb(201, 195, 195) solid; */
+
   border-radius: 10px;
   width: 60%;
   height: 40px;
   padding: 10px;
-  /* box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3); */
+
   transition: 0.3s ease-in-out;
   color: white;
 }
@@ -316,10 +300,9 @@
   color: white;
 }
 .transactions-box {
-  height: auto; /* ya min-height: 300px; */
+  height: auto; 
   overflow: visible;
 }
-/* Add to transactions.css */
 
 body.dark-mode .transactions-box {
     background-color: var(--color-card-background) !important;
@@ -329,7 +312,6 @@ body.dark-mode .transactions-box {
 body.dark-mode .aa-amount-input input,
 body.dark-mode .description input,
 body.dark-mode .date input {
-    /* Inputs should be transparent to blend with the card background, but text readable */
     background-color: transparent !important;
     color: var(--color-text-dark) !important;
 }
@@ -339,11 +321,11 @@ body.dark-mode .aa-amount-input label {
 }
 
 body.dark-mode .category-tabs {
-    background-color: #383838 !important; /* Non-active categories stand out */
+    background-color: #383838 !important; 
     color: var(--color-text-medium) !important;
 }
 
-/* Mute the vibrant category image backgrounds */
+
 body.dark-mode .ct-image {
     opacity: 0.7;
 }
@@ -351,4 +333,3 @@ body.dark-mode .ct-image {
 body.dark-mode #food .ct-image {
     background-color: rgb(200, 152, 82) !important;
 }
-/* ... apply muted background to all other category images ... */

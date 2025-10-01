@@ -212,12 +212,10 @@ export function renderRecentTransactions() {
   const container = document.querySelector(".recent-transactions");
   if (!container) return;
 
-  // Sort eiTracker by date (newest first)
   const sortedTransactions = [...eiTracker].sort((a, b) => {
     return new Date(b.date) - new Date(a.date);
   });
 
-  // Take only the 5 most recent
   const recentFive = sortedTransactions.slice(0, 5);
 
   if (recentFive.length === 0) {
@@ -225,7 +223,6 @@ export function renderRecentTransactions() {
     return;
   }
 
-  // Build HTML
   const html = recentFive
     .map((tx) => {
       const sign = tx.type === "expense" ? "-" : "+";
@@ -247,15 +244,12 @@ export function renderRecentTransactions() {
 
   container.innerHTML = html;
 }
-// Add this function to update the transaction count
-// Add this function to update the transaction count
 export function updateTransactionCount(data = eiTracker) {
     const countElement = document.getElementById("transaction-count");
     if (countElement) {
         countElement.textContent = `${data.length} transactions total`;
     }
 }
-// Global state to track sorting
 let currentSort = {
     key: 'date', // 'date' or 'amount'
     direction: 'desc' // 'asc' or 'desc'
@@ -273,36 +267,28 @@ export function initSortListeners() {
         handleSort('amount');
     });
 
-    // Initial sort on load (by date descending)
     sortTransactions();
 }
 
 function handleSort(key) {
-    // 1. Toggle direction if the same key is clicked
     if (currentSort.key === key) {
         currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
     } else {
-        // 2. Set new key and default to descending
         currentSort.key = key;
         currentSort.direction = 'desc';
     }
     
-    // 3. Perform the sort and update the UI
     sortTransactions();
 }
 
 function sortTransactions() {
-    // Create a copy of the array to sort (eiTracker is the main data source)
     const sortedList = [...eiTracker].sort((a, b) => {
         let valA, valB;
 
         if (currentSort.key === 'date') {
-            // Compare dates
             valA = new Date(a.date);
             valB = new Date(b.date);
         } else if (currentSort.key === 'amount') {
-            // Compare amounts (as numbers)
-            // Use Math.abs() to sort by magnitude regardless of expense/income type
             valA = Math.abs(Number(a.amount)); 
             valB = Math.abs(Number(b.amount));
         } else {
@@ -320,7 +306,6 @@ function sortTransactions() {
         return currentSort.direction === 'asc' ? comparison : comparison * -1;
     });
 
-    // Update the UI
     updateSortIcons();
     renderList(sortedList); // Pass the sorted list to the renderer
 }
@@ -329,11 +314,10 @@ function updateSortIcons() {
     const dateIcon = document.getElementById('date-sort-icon');
     const amountIcon = document.getElementById('amount-sort-icon');
 
-    // Reset icons
     if(dateIcon) dateIcon.style.transform = '';
     if(amountIcon) amountIcon.style.transform = '';
 
-    // Apply active icon style
+
     if (currentSort.key === 'date' && dateIcon) {
         dateIcon.style.transform = currentSort.direction === 'desc' ? 'rotate(180deg)' : 'none';
         dateIcon.style.opacity = '1';

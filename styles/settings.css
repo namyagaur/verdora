@@ -1,6 +1,6 @@
-/* --- Variables --- */
+
 :root {
-  --color-primary: #7b68ee; /* A light purple for main accents */
+  --color-primary: #7b68ee; 
   --color-gradient-start: #a87ff2;
   --color-gradient-end: #ff85a2;
   --color-background-light: #f5f6f8;
@@ -11,7 +11,6 @@
   --color-border: #e0e0e0;
   --color-success: #28a745;
 
-  /* Theme-specific colors */
   --color-ocean: #3498db;
   --color-sunset: #ff7043;
   --color-forest: #2ecc71;
@@ -21,7 +20,6 @@
 
 
 
-/* Ocean Breeze */
 body[data-theme="ocean-breeze"] {
   --color-primary: #3498db;
   --color-gradient-start: #6dd5fa;
@@ -29,7 +27,7 @@ body[data-theme="ocean-breeze"] {
   --color-background-light: #f4faff;
 }
 
-/* Sunset Glow */
+
 body[data-theme="sunset-glow"] {
   --color-primary: #ff7043;
   --color-gradient-start: #ff9966;
@@ -37,7 +35,6 @@ body[data-theme="sunset-glow"] {
   --color-background-light: #fff7f5;
 }
 
-/* Forest Fresh */
 body[data-theme="forest-fresh"] {
   --color-primary: #2ecc71;
   --color-gradient-start: #a8e063;
@@ -45,7 +42,7 @@ body[data-theme="forest-fresh"] {
   --color-background-light: #f7fff9;
 }
 
-/* Minimal Mode */
+
 body[data-theme="minimal-mode"] {
   --color-primary: #95a5a6;
   --color-gradient-start: #bdc3c7;
@@ -53,43 +50,36 @@ body[data-theme="minimal-mode"] {
   --color-background-light: #fafafa;
 }
 
-/* --- Global Styles --- */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* in settings.js */
 body {
   font-family: "Inter", sans-serif;
   background-color: var(--color-background-light);
   color: var(--color-text-dark);
   line-height: 1.6;
 
-  /* flex centering */
   display: flex;
   justify-content: center;
   align-items: center;
 
-  /* full height minus nav */
   margin-top: 100px;
   min-height: calc(100vh - 100px);
 
   padding: 20px;
-  margin: 0; /* 🚨 remove margin-top: 350px */
+  margin: 0; 
 }
 
-/* push content below fixed nav */
 .app-container {
-  /* just enough gap below nav */
   width: 100%;
   max-width: 450px;
   padding-bottom: 120px;
   background-color: var(--color-background-light);
 }
 
-/* --- Header --- */
 .header {
   display: flex;
   justify-content: space-between;
@@ -124,7 +114,6 @@ body {
   font-size: 1.1rem;
 }
 
-/* --- Settings Main Area --- */
 .main-title {
   font-size: 2rem;
   font-weight: 700;
@@ -138,7 +127,6 @@ body {
   margin-bottom: 30px;
 }
 
-/* --- Card Styles --- */
 .card {
   background-color: var(--color-card-background);
   border-radius: 20px;
@@ -165,14 +153,12 @@ body {
   font-weight: 600;
 }
 
-/* --- Profile Card Specifics --- */
 .profile-card h2 {
-  /* Hide 'Profile' title on the image, but keep it for accessibility */
   display: none;
 }
 
 .profile-card {
-  padding-top: 5px; /* Adjust padding for visual match */
+  padding-top: 5px;
 }
 
 .profile-details {
@@ -261,7 +247,6 @@ body {
   font-weight: 500;
 }
 
-/* --- Settings Row (General) --- */
 .setting-row {
   display: flex;
   justify-content: space-between;
@@ -294,7 +279,6 @@ body {
   margin-top: 2px;
 }
 
-/* --- Divider --- */
 .divider {
   border: 0;
   height: 1px;
@@ -302,7 +286,7 @@ body {
   margin: 10px 0;
 }
 
-/* --- Toggle Switch (Copied from Dark Mode Toggle) --- */
+
 .switch {
   position: relative;
   display: inline-block;
@@ -355,7 +339,6 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-/* --- Color Themes Section --- */
 .color-themes-section h3 {
   font-size: 1rem;
   color: var(--color-text-medium);
@@ -390,27 +373,22 @@ input:checked + .slider:before {
   flex-shrink: 0;
 }
 
-/* Gradient Vibes */
 .color-theme[data-theme="gradient-vibes"] .gradient-indicator {
   background: linear-gradient(135deg, #a87ff2, #ff85a2);
 }
 
-/* Ocean Breeze */
 .color-theme[data-theme="ocean-breeze"] .ocean-indicator {
   background: linear-gradient(135deg, #3498db, skyblue);
 }
 
-/* Sunset Glow */
 .color-theme[data-theme="sunset-glow"] .sunset-indicator {
   background: linear-gradient(135deg, #ff7043, rgb(247, 189, 83));
 }
 
-/* Forest Fresh */
 .color-theme[data-theme="forest-fresh"] .forest-indicator {
   background: linear-gradient(135deg, green, lightgreen);
 }
 
-/* Minimal Mode */
 .color-theme[data-theme="minimal-mode"] .minimal-indicator {
   background-color: #95a5a6;
 }
@@ -425,12 +403,10 @@ input:checked + .slider:before {
   text-transform: uppercase;
 }
 
-/* Adjust active theme row for internal padding */
 .color-theme.active .color-indicator {
   margin-left: 0;
 }
 
-/* --- Action Buttons (Data & Privacy) --- */
 .action-button {
   width: 100%;
   display: flex;
@@ -461,8 +437,8 @@ input:checked + .slider:before {
 }
 
 .danger-action {
-  background-color: #ffebe9; /* Light red background */
-  color: #dc3545; /* Darker red text */
+  background-color: #ffebe9; 
+  color: #dc3545;
 }
 
 .danger-action .icon {
@@ -478,7 +454,6 @@ input:checked + .slider:before {
   color: var(--color-text-dark);
 }
 
-/* --- About Card --- */
 .about-card {
   text-align: center;
   padding: 30px 20px;
@@ -487,7 +462,7 @@ input:checked + .slider:before {
 
 .about-card .icon-large {
   font-size: 2.5rem;
-  color: var(--color-forest); /* Match heart color */
+  color: var(--color-forest); 
   margin-bottom: 10px;
 }
 
@@ -523,16 +498,16 @@ input:checked + .slider:before {
   padding: 10px 16px;
   border-radius: 12px;
   border: 2px solid transparent;
-  background: #f5f5f5; /* default grayish background */
+  background: #f5f5f5;
   color: #333;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
-/* Active/selected option */
+
 .color-option.active {
-  background: var(--color-primary); /* use selected gradient base */
-  color: #fff; /* text white for contrast */
+  background: var(--color-primary); 
+  color: #fff; 
   font-weight: bold;
   border-color: var(--color-primary);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -615,28 +590,21 @@ body[data-theme="minimal-mode"] .color-theme[data-theme="minimal-mode"].active {
   border: 2px solid var(--color-minimal);
   color: #fff;
 }
-/* --- Variables --- */
 :root {
-  /* ... existing theme variables ... */
-  --color-danger-soft: #ff8a80; /* Softer, slightly brighter red for dark mode */
+  --color-danger-soft: #ff8a80; 
 }
 
-/* Dark Mode (applies on top of any theme) */
 body.dark-mode {
-  /* Soft Dark Palette */
-  --color-background-light: #1f1f1f; /* Soft dark gray background */
-  --color-card-background: #282828; /* Slightly lighter gray for cards */
+  --color-background-light: #1f1f1f; 
+  --color-card-background: #282828; 
+  --color-text-dark: #f0f0f0; 
+  --color-text-medium: #c0c0c0; 
+  --color-text-light: #999999;
   
-  /* Text Colors */
-  --color-text-dark: #f0f0f0; /* Near white for primary text */
-  --color-text-medium: #c0c0c0; /* Light gray for secondary text */
-  --color-text-light: #999999; /* Muted gray for subtle text/icons */
-  
-  --color-border: #444444; /* Dark border for separation */
-  --color-success: #70d870; /* Brighter green for success/income */
+  --color-border: #444444; 
+  --color-success: #70d870; 
 }
 
-/* Ensure global elements use dark mode colors */
 body.dark-mode .app-container {
     background-color: var(--color-background-light) !important;
 }
@@ -650,7 +618,6 @@ body.dark-mode .left-nav-desc {
     color: var(--color-text-medium) !important;
 }
 
-/* Action Buttons and Dividers */
 body.dark-mode .card,
 body.dark-mode .about-card {
     background-color: var(--color-card-background) !important;
