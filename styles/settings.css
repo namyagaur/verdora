@@ -488,6 +488,7 @@ input:checked + .slider:before {
 .about-card {
   text-align: center;
   padding: 30px 20px;
+  background-color: rgba(248, 249, 249);
 }
 
 .about-card .icon-large {
@@ -570,4 +571,8 @@ body[data-theme="forest-fresh"] .color-theme[data-theme="forest-fresh"].active {
 body[data-theme="minimal-mode"] .color-theme[data-theme="minimal-mode"].active {
   background: var(--color-minimal);
   color: #fff;
+}
+
+.heart-verdora img{
+  width: 150px;
 }
