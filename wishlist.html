@@ -1,32 +1,39 @@
-<div class="wishlist-heading-wrapper">
-  <div class="wt-heading">
-    <div class="wt-title">Wishlist Tracker</div>
-    <div class="wt-subheading">Save for the things you want</div>
-  </div>
-  <div class="wt-add">+ Add Item</div>
-</div>
-<div class="wishlist-adding-box">
-  <div class="wab-title">
-    <div class="wab-text">Name</div>
-    <input type="text" id="wishlist-name" placeholder="Enter Item Name" />
+<div class="wl-cont">
+  <div class="wishlist-heading-wrapper">
+    <div class="wt-heading">
+      <div class="wt-title">Wishlist Tracker</div>
+      <div class="wt-subheading">Save for the things you want</div>
+    </div>
+    <div class="wt-add" id="show-add-item-btn">+ Add Item</div>
   </div>
 
-  <div class="wab-amount">
-    <div class="wab-text">Amount</div>
-    <input type="number" id="wishlist-amount" placeholder="0.0" />
-  </div>
+  <div class="modal-backdrop" id="wishlist-modal-backdrop">
+    <div class="wishlist-adding-box" id="wishlist-adding-box">
+      <div class="wab-title">
+        <div class="wab-text">Name</div>
+        <input type="text" id="wishlist-name" placeholder="Enter Item Name" />
+      </div>
 
-  <div class="wab-icon">
-    <div class="wab-text">Icon</div>
-    <input type="text" id="wishlist-icon"  placeholder="Press Win+." />
-  </div>
-  <div class="wab-category">
-    <div class="wab-text">Category</div>
-    <input type="text" id="wishlist-category" placeholder="Ex Tech, Housing..." />
-  </div>
-  <div class="wab-add">+ Add</div>
-</div>
+      <div class="wab-amount">
+        <div class="wab-text">Amount</div>
+        <input type="number" id="wishlist-amount" placeholder="0.0" />
+      </div>
 
-<div class="wishlist-list">
-
+      <div class="wab-icon">
+        <div class="wab-text">Icon</div>
+        <input type="text" id="wishlist-icon" placeholder="Press Win+." />
+      </div>
+      <div class="wab-category">
+        <div class="wab-text">Category</div>
+        <input
+          type="text"
+          id="wishlist-category"
+          placeholder="Ex Tech, Housing..."
+        />
+      </div>
+      <div class="wab-add" id="add-wishlist-item">+ Add</div>
+      <div class="wab-close" id="close-add-item-btn">X</div>
+    </div>
+  </div>
+  <div class="wishlist-list"></div>
 </div>

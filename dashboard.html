@@ -1,28 +1,49 @@
-<div class="balance-card">
-        <div class="cb-title">Current Balance</div>
-        <div class="current-balance">$2650</div>
-        <div class="percent">+12% this month</div>
+<div class="dashboard-container">
+  <div class="balance-card">
+    <div class="cb-title">Current Balance</div>
+    <div class="current-balance"></div>
+    <div class="percent">+12% this month</div>
+  </div>
+
+  <div class="total-info">
+    <div class="expense-index">
+      <div class="image-expense">
+        <img src="img/decrease.png" alt="" />
       </div>
 
-      <div class="total-info">
-        
-        <div class="expense-index">
-          <div class="image-expense">
-            <img src="img/decrease.png" alt="" />
-          </div>
+      <div class="expense-text">Expense</div>
+      <div class="expense-insights">$0</div>
+    </div>
 
-          <div class="expense-text">Expense</div>
-          <div class="expense-insights"></div>
-        </div>
-
-        <div class="savings-index">
-          <div class="image-savings">
-            <img src="img/piggy-bank.png" alt="" />
-          </div>
-          <div class="savings-text">Savings</div>
-          <div class="savings-insights"></div>
-        </div>
+    <div class="savings-index">
+      <div class="image-savings">
+        <img src="img/piggy-bank.png" alt="" />
       </div>
+      <div class="savings-text">Savings</div>
+      <div class="savings-insights"></div>
+    </div>
+  </div>
 
-      <div class="expense-piechart"></div>
-      <div class="recent-transactions"></div>
+  <div class="expense-card">
+    <div class="card-title-group">
+      <span class="icon" style="color: #7b68ee">₹</span>
+      <h3>Expense Breakdown</h3>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="expensePieChart"></canvas>
+    </div>
+    <div class="cl-cont">
+      <div id="chart-legend"></div>
+    </div>
+  </div>
+
+  <div class="rt-cont">
+    <div class="card-title-group">
+      <span class="icon" style="color: #7b68ee"></span>
+      <h3>Recent Transactions</h3>
+    </div>
+    <div class="recent-transactions">
+    </div>
+  </div>
+</div>

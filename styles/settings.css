@@ -1,119 +1,573 @@
-.settings-title-desc {
-  margin-top: 20px;
+/* --- Variables --- */
+:root {
+  --color-primary: #7b68ee; /* A light purple for main accents */
+  --color-gradient-start: #a87ff2;
+  --color-gradient-end: #ff85a2;
+  --color-background-light: #f5f6f8;
+  --color-card-background: #ffffff;
+  --color-text-dark: #333333;
+  --color-text-medium: #6c757d;
+  --color-text-light: #99a2ad;
+  --color-border: #e0e0e0;
+  --color-success: #28a745;
+
+  /* Theme-specific colors */
+  --color-ocean: #3498db;
+  --color-sunset: #ff7043;
+  --color-forest: #2ecc71;
+  --color-minimal: #95a5a6;
+}
+
+/* Dark Mode (applies on top of any theme) */
+body.dark-mode {
+  --color-background-light: #121212;
+  --color-card-background: #1e1e1e;
+  --color-text-dark: #f5f5f5;
+  --color-text-medium: #cccccc;
+  --color-text-light: #999999;
+  --color-border: #333333;
+}
+/* 🌈 Default theme (Gradient Vibes) already in :root */
+
+/* Ocean Breeze */
+body[data-theme="ocean-breeze"] {
+  --color-primary: #3498db;
+  --color-gradient-start: #6dd5fa;
+  --color-gradient-end: #2980b9;
+  --color-background-light: #f4faff;
+}
+
+/* Sunset Glow */
+body[data-theme="sunset-glow"] {
+  --color-primary: #ff7043;
+  --color-gradient-start: #ff9966;
+  --color-gradient-end: #ff5e62;
+  --color-background-light: #fff7f5;
+}
+
+/* Forest Fresh */
+body[data-theme="forest-fresh"] {
+  --color-primary: #2ecc71;
+  --color-gradient-start: #a8e063;
+  --color-gradient-end: #56ab2f;
+  --color-background-light: #f7fff9;
+}
+
+/* Minimal Mode */
+body[data-theme="minimal-mode"] {
+  --color-primary: #95a5a6;
+  --color-gradient-start: #bdc3c7;
+  --color-gradient-end: #2c3e50;
+  --color-background-light: #fafafa;
+}
+
+/* --- Global Styles --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* in settings.js */
+body {
+  font-family: "Inter", sans-serif;
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+  line-height: 1.6;
+
+  /* flex centering */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-.s-title {
-  font-size: 24px;
-  font-weight: 600;
-  background: linear-gradient(90deg, rgb(183, 42, 164), rgb(142, 31, 176));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 10px;
-}
-.s-desc {
-  font-size: 15px;
-  color: grey;
+
+  /* full height minus nav */
+  margin-top: 100px;
+  min-height: calc(100vh - 100px);
+
+  padding: 20px;
+  margin: 0; /* 🚨 remove margin-top: 350px */
 }
 
-/* profile */
+/* push content below fixed nav */
+.app-container {
+  /* just enough gap below nav */
+  width: 100%;
+  max-width: 450px;
+  padding-bottom: 120px;
+  background-color: var(--color-background-light);
+}
 
-.profile {
-  background-color: white;
-  border-radius: 10px;
-  margin-top: 20px;
-  padding: 13px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+/* --- Header --- */
+.header {
   display: flex;
-  flex-direction: column;
-  width: 350px;
-}
-
-.profile-title {
-  display: flex;
-  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
-  gap: 7px;
-  color: rgba(0, 0, 0, 0.8);
-}
-.profile-svg svg {
-  width: 22px;
-  stroke: purple;
+  padding: 15px 0;
+  margin-bottom: 20px;
 }
 
-.member-details {
-  margin-top: 20px;
-  display: flex;
-  gap: 20px;
-  align-items: center;
+.logo-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-primary);
 }
-.profile-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+.logo-tagline {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--color-text-medium);
+  font-weight: 500;
+}
+
+.profile-icon {
+  width: 40px;
+  height: 40px;
+  background-color: var(--color-primary);
   color: white;
-  font-family: Arial, Helvetica, sans-serif;
-  width: 75px;
-  height: 75px;
-  border-radius: 40px;
-  background: linear-gradient(
-    90deg,
-    rgb(155, 155, 233),
-    rgb(139, 139, 247),
-    rgb(250, 112, 250)
-  );
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-size: 1.1rem;
 }
 
-.details {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+/* --- Settings Main Area --- */
+.main-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  text-align: center;
 }
-.profile-name {
-  font-size: 17px;
+
+.subtitle {
+  text-align: center;
+  color: var(--color-text-medium);
+  margin-bottom: 30px;
+}
+
+/* --- Card Styles --- */
+.card {
+  background-color: var(--color-card-background);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.card-title-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  color: var(--color-text-dark);
+}
+
+.card-title-group .icon {
+  font-size: 1.2rem;
+  color: var(--color-primary);
+  margin-right: 10px;
+}
+
+.card-title-group h2 {
+  font-size: 1.2rem;
   font-weight: 600;
 }
-.profile-date {
-  font-size: 14px;
-  color: grey;
+
+/* --- Profile Card Specifics --- */
+.profile-card h2 {
+  /* Hide 'Profile' title on the image, but keep it for accessibility */
+  display: none;
+}
+
+.profile-card {
+  padding-top: 5px; /* Adjust padding for visual match */
+}
+
+.profile-details {
+  display: flex;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 20px;
+}
+
+.avatar-container {
+  position: relative;
+  margin-right: 15px;
+}
+
+.avatar-initials {
+  width: 80px;
+  height: 80px;
+  background-image: linear-gradient(135deg, var(--color-primary), #ff85a2);
+  border-radius: 50%;
+  color: white;
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.camera-button {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 3px solid white;
+  background-color: var(--color-primary);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  padding: 0;
+}
+
+.user-info h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
 }
 
 .pro-member {
-  border: rgb(244, 149, 254) solid 0.5px;
-  border-radius: 4px;
-  font-size: 13px;
-  width: fit-content;
-  padding-left: 10px;
-  padding-right: 10px;
-  background-color: rgb(250, 237, 253);
-  color: purple;
-  font-weight: 600;
+  background-color: #fce8f2;
+  color: #cc4281;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 
-/* email mail */
+.member-since {
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+  margin-bottom: 10px;
+}
 
-.member-email, .member-phone {
-  margin-top: 30px;
+.contact-info p {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  margin-bottom: 10px;
   display: flex;
-  flex-direction: column;
-}
-.me-title , .mp-title{
-  font-size: 14px;
-  font-weight: 600;
-}
-.me-email-wrapper, .mp-phone-wrapper {
-    margin-top: 10px;
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
   align-items: center;
 }
-.email-svg svg, .phone-svg svg{
-  width: 16px;
-  stroke: grey;
+
+.contact-info .icon {
+  color: var(--color-text-light);
+  margin-right: 10px;
+  width: 15px;
+  text-align: center;
 }
-.me-email, .mp-phone{
-font-size: 15px;
+
+.contact-info span {
+  font-weight: 500;
+}
+
+/* --- Settings Row (General) --- */
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.setting-text-group {
+  display: flex;
+  align-items: center;
+}
+
+.setting-text-group .icon {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin-right: 15px;
+}
+
+.setting-text-group span {
+  font-weight: 500;
+}
+
+.setting-text-group p {
+  font-size: 0.85rem;
+  color: var(--color-text-medium);
+  margin-top: 2px;
+}
+
+/* --- Divider --- */
+.divider {
+  border: 0;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 10px 0;
+}
+
+/* --- Toggle Switch (Copied from Dark Mode Toggle) --- */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-border);
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.4s;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+input:checked + .slider {
+  background-color: var(--color-primary);
+}
+
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+.slider.round {
+  border-radius: 28px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* --- Color Themes Section --- */
+.color-themes-section h3 {
+  font-size: 1rem;
+  color: var(--color-text-medium);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.color-theme {
+  padding: 15px 0;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s;
+  font-weight: 500;
+}
+
+.color-theme:hover {
+  background-color: #f7f7f9;
+}
+
+.color-theme.active {
+  background-color: #f3f0ff;
+  border: 2px solid var(--color-primary);
+  padding: 13px 15px;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.color-indicator {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  margin-right: 15px;
+  flex-shrink: 0;
+}
+
+/* Gradient Vibes */
+.color-theme[data-theme="gradient-vibes"] .gradient-indicator {
+  background: linear-gradient(135deg, #a87ff2, #ff85a2);
+}
+
+/* Ocean Breeze */
+.color-theme[data-theme="ocean-breeze"] .ocean-indicator {
+  background: linear-gradient(135deg, #3498db, skyblue);
+}
+
+/* Sunset Glow */
+.color-theme[data-theme="sunset-glow"] .sunset-indicator {
+  background: linear-gradient(135deg, #ff7043, rgb(247, 189, 83));
+}
+
+/* Forest Fresh */
+.color-theme[data-theme="forest-fresh"] .forest-indicator {
+  background: linear-gradient(135deg, green, lightgreen);
+}
+
+/* Minimal Mode */
+.color-theme[data-theme="minimal-mode"] .minimal-indicator {
+  background-color: #95a5a6;
+}
+
+.theme-status {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Adjust active theme row for internal padding */
+.color-theme.active .color-indicator {
+  margin-left: 0;
+}
+
+/* --- Action Buttons (Data & Privacy) --- */
+.action-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.action-button .icon {
+  margin-right: 15px;
+  font-size: 1.1rem;
+}
+
+.primary-action {
+  background-color: #f2f2f2;
+  color: var(--color-text-dark);
+}
+
+.primary-action .icon {
+  color: var(--color-primary);
+}
+
+.danger-action {
+  background-color: #ffebe9; /* Light red background */
+  color: #dc3545; /* Darker red text */
+}
+
+.danger-action .icon {
+  color: #dc3545;
+}
+
+.secondary-action {
+  background-color: #f2f2f2;
+  color: var(--color-text-dark);
+}
+
+.secondary-action .icon {
+  color: var(--color-text-dark);
+}
+
+/* --- About Card --- */
+.about-card {
+  text-align: center;
+  padding: 30px 20px;
+}
+
+.about-card .icon-large {
+  font-size: 2.5rem;
+  color: var(--color-forest); /* Match heart color */
+  margin-bottom: 10px;
+}
+
+.about-card h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.about-card .tagline {
+  font-style: italic;
+  color: var(--color-text-medium);
+  margin-bottom: 20px;
+}
+
+.about-links a {
+  color: var(--color-text-medium);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.about-links a:hover {
+  color: var(--color-primary);
+}
+
+.about-links span {
+  color: var(--color-text-light);
+  margin: 0 10px;
+}
+.color-option {
+  padding: 10px 16px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: #f5f5f5; /* default grayish background */
+  color: #333;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Active/selected option */
+.color-option.active {
+  background: var(--color-primary); /* use selected gradient base */
+  color: #fff; /* text white for contrast */
+  font-weight: bold;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+body[data-theme="gradient-vibes"]
+  .color-theme[data-theme="gradient-vibes"].active {
+  background: linear-gradient(
+    135deg,
+    var(--color-gradient-start),
+    var(--color-gradient-end)
+  );
+  color: #fff;
+}
+
+body[data-theme="ocean-breeze"] .color-theme[data-theme="ocean-breeze"].active {
+  background: var(--color-ocean);
+  color: #fff;
+}
+
+body[data-theme="sunset-glow"] .color-theme[data-theme="sunset-glow"].active {
+  background: var(--color-sunset);
+  color: #fff;
+}
+
+body[data-theme="forest-fresh"] .color-theme[data-theme="forest-fresh"].active {
+  background: var(--color-forest);
+  color: #fff;
+}
+
+body[data-theme="minimal-mode"] .color-theme[data-theme="minimal-mode"].active {
+  background: var(--color-minimal);
+  color: #fff;
 }

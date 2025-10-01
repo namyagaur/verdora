@@ -1,79 +1,159 @@
-<div class="settings-title-desc">
-  <div class="s-title">Settings & Profile</div>
-  <div class="s-desc">Customize your Verdora experience</div>
-</div>
+<div class="app-container">
+  <main class="settings-page">
+    <h1 class="main-title">Settings & Profile</h1>
+    <p class="subtitle">Customize your Verdora experience</p>
 
-<div class="profile">
-  <div class="profile-title">
-    <div class="profile-svg">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="size-6"
-      >
-        <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-        />
-      </svg>
-    </div>
-    <div class="profile-t">Profile</div>
-  </div>
-  <div class="member-details">
-    <div class="profile-image">NG</div>
-    <div class="details">
-      <div class="profile-name">Namya Gaur</div>
-      <div class="profile-date">Member since Sept 2025</div>
-      <div class="pro-member">Pro Member ✨</div>
-    </div>
-  </div>
+    <section class="card profile-card">
+      <div class="card-title-group">
+        <i class="fas fa-user icon"></i>
+        <h2>Profile</h2>
+      </div>
+      <div class="profile-details">
+        <div class="avatar-container">
+          <div class="avatar-initials">NG</div>
+          <button class="camera-button"><i class="fas fa-camera"></i></button>
+        </div>
+        <div class="user-info">
+          <h3>Namya Gaur</h3>
+          <p class="member-since">Member since Jan 2024</p>
+          <span class="pro-member">Pro Member ✨</span>
+        </div>
+      </div>
+      <div class="contact-info">
+        <p>
+          <i class="fas fa-envelope icon"></i> Email:
+          <span>jane.doe@example.com</span>
+        </p>
+        <p>
+          <i class="fas fa-phone icon"></i> Phone:
+          <span>+1 (555) 123-4567</span>
+        </p>
+        <p>
+          <i class="fas fa-map-marker-alt icon"></i> Location:
+          <span>San Francisco, CA</span>
+        </p>
+      </div>
+    </section>
 
-  <div class="member-email">
-    <div class="me-title">Email</div>
-    <div class="me-email-wrapper">
-      <div class="email-svg">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"
-          />
-        </svg>
+    <section class="card theme-card">
+      <div class="card-title-group">
+        <i class="fas fa-palette icon"></i>
+        <h2>Theme & Vibes</h2>
       </div>
-      <div class="me-email">namyaagaur@gmail.com</div>
-    </div>
-  </div>
-  <div class="member-phone">
-    <div class="mp-title">Phone</div>
-    <div class="mp-phone-wrapper">
-      <div class="phone-svg">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="size-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z"
-          />
-        </svg>
+
+      <div class="setting-row toggle-row">
+        <div class="setting-text-group">
+          <i class="fas fa-sun icon"></i>
+          <div class="text-content">
+            <span>Dark Mode</span>
+            <p>Switch to dark theme</p>
+          </div>
+        </div>
+        <label class="switch">
+          <input type="checkbox" id="dark-mode-toggle" />
+          <span class="slider round"></span>
+        </label>
       </div>
-      <div class="mp-phone">7983XXXXXX</div>
-    </div>
-  </div>
+
+      <hr class="divider" />
+
+      <div class="color-themes-section">
+        <h3>Color Themes</h3>
+
+        <div class="setting-row color-theme active" data-theme="gradient-vibes">
+          <div class="color-indicator gradient-indicator"></div>
+          <span>Gradient Vibes</span>        </div>
+
+        <div class="setting-row color-theme" data-theme="ocean-breeze">
+          <div class="color-indicator ocean-indicator"></div>
+          <span>Ocean Breeze</span>
+        </div>
+
+        <div class="setting-row color-theme" data-theme="sunset-glow">
+          <div class="color-indicator sunset-indicator"></div>
+          <span>Sunset Glow</span>
+        </div>
+
+        <div class="setting-row color-theme" data-theme="forest-fresh">
+          <div class="color-indicator forest-indicator"></div>
+          <span>Forest Fresh</span>
+        </div>
+
+        <div class="setting-row color-theme" data-theme="minimal-mode">
+          <div class="color-indicator minimal-indicator"></div>
+          <span>Minimal Mode</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="card notification-card">
+      <div class="card-title-group">
+        <i class="fas fa-bell icon"></i>
+        <h2>Notifications</h2>
+      </div>
+
+      <div class="setting-row toggle-row">
+        <div class="setting-text-group">
+          <span>Push Notifications</span>
+          <p>Receive notifications on your device</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" checked />
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="setting-row toggle-row">
+        <div class="setting-text-group">
+          <span>Goal Reminders</span>
+          <p>Get reminded about your savings goals</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+
+      <div class="setting-row toggle-row">
+        <div class="setting-text-group">
+          <span>Monthly Reports</span>
+          <p>Receive monthly spending summaries</p>
+        </div>
+        <label class="switch">
+          <input type="checkbox" />
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </section>
+
+    <section class="card data-privacy-card">
+      <div class="card-title-group">
+        <i class="fas fa-shield-alt icon"></i>
+        <h2>Data & Privacy</h2>
+      </div>
+
+      <button class="action-button primary-action">
+        <i class="fas fa-download icon"></i> Export My Data
+      </button>
+      <button class="action-button danger-action">
+        <i class="fas fa-trash-alt icon"></i> Clear All Data
+      </button>
+      <button class="action-button secondary-action">
+        <i class="fas fa-sign-out-alt icon"></i> Sign Out
+      </button>
+    </section>
+
+    <section class="card about-card">
+      <i class="fas fa-heart icon-large"></i>
+      <h2>Verdora v2.1.0</h2>
+      <p class="tagline">Made with love for Gen Z finances</p>
+      <div class="about-links">
+        <a href="#">Privacy Policy</a>
+        <span>•</span>
+        <a href="#">Terms of Service</a>
+        <span>•</span>
+        <a href="#">Support</a>
+      </div>
+    </section>
+  </main>
 </div>

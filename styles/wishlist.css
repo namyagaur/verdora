@@ -1,14 +1,23 @@
+.wl-cont{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 100px;
+}
 .wishlist-heading-wrapper {
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 70px;
+  width: 100%;
 }
 .wt-heading {
   display: flex;
   flex-direction: column;
+    width: 100%;
 }
 .wt-title {
   font-size: 24px;
@@ -17,6 +26,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 6px;
+  
 }
 .wt-subheading {
   color: #777474;
@@ -32,11 +42,18 @@
   padding: 8px 10px 8px 20px;
   border-radius: 10px;
   color: white;
+  height: fit-content;;
+  width: 140px;
 }
 
 /* wishlist item */
-
+.wishlist-list{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .wishlist-item {
+  z-index: 1;
   width: 370px;
   height: fit-content;
   background-color: white;
@@ -138,30 +155,51 @@
   align-items: center;
 }
 
-.w-remarks {
-  background-color: rgb(253, 253, 177);
+.w-remarks{
   font-size: 12px;
   padding: 4px 10px;
-  color: rgba(130, 37, 37, 0.8);
   font-weight: 500;
   border-radius: 10px;
+}
+.w-remarks.Start{
+  background-color: rgb(253, 253, 177);
+  color: rgba(130, 37, 37, 0.8);
   border: rgb(230, 227, 20) solid 0.9px;
+
+}
+.w-remarks.Halfway{
+  background-color: rgb(223, 230, 248);
+  color: rgb(20, 76, 230);
+  border: rgb(20, 76, 230) solid 0.9px;
+
+}
+.w-remarks.Almost{
+  background-color: rgb(244, 236, 251);
+  color: rgb(132, 20, 230);
+  border: rgb(132, 20, 230) solid 0.9px;
+
+}
+.w-remarks.Completed{
+  background-color: rgb(178, 243, 161);
+  color: rgb(29, 102, 11);
+  border: rgb(29, 102, 11) solid 0.9px;
+
 }
 
 #a-50 {
   background-color: rgb(213, 251, 188);
-  font-size: 14px;
-  padding: 10px 10px;
-  color: rgba(66, 160, 7, 0.9);
+  font-size: 13px;
+  padding: 4px 10px;
+  color: rgba(33, 72, 9, 0.9);
   font-weight: 500;
   border-radius: 7px;
-  border: rgb(66, 160, 7) solid 0.9px;
+  border: rgba(33, 72, 9, 0.9) solid 0.9px;
 }
 #a-100 {
   margin-left: 7px;
   background-color: rgb(177, 224, 253);
-  font-size: 14px;
-  padding: 10px 10px;
+  font-size: 13px;
+  padding: 4px 10px;
   color: rgba(19, 34, 162, 0.8);
   font-weight: 500;
   border-radius: 7px;
@@ -175,19 +213,22 @@
   justify-content: center;
   align-items: center;
   gap: 10px;
+  
 }
 .add-button {
-  font-size: 16px;
+  font-size: 20px;
   background: linear-gradient(
     90deg,
     rgb(237, 54, 213),
     rgb(164, 31, 205),
     rgb(145, 3, 145)
   );
-  padding: 10px 15px;
-  border-radius: 15px;
+  padding: 1px 10px;
+  border-radius: 17px;
   color: white;
+
 }
+
 
 .wishlist-add-amount input {
   border: none;
@@ -226,11 +267,94 @@
 
 .wab-add{
   margin-top: 10px;
-  margin-left: 100px;
+  margin-left: 80px;
   font-size: 16px;
-  width: 60px;
+  width: 80px;
   background: linear-gradient(45deg, purple, rgb(132, 47, 216));
   padding: 8px 10px 8px 20px;
   border-radius: 10px;
   color: white;
+}
+.wab-add:hover{
+  cursor: pointer;
+}
+.wp-progress-bar {
+  height: 13px;
+  background: linear-gradient(to right, #eee, #ddd);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 5px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.2);
+
+}
+
+.wp-progress-fill {
+  height: 100%;
+  background: linear-gradient(145deg, #6a4bff, #a050ff, rgb(36, 170, 188));
+  width: 0%;
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+  box-shadow: 0 0 5px rgba(255, 77, 77, 0.6);
+}
+/* Completed wishlist item */
+.wishlist-complete {
+  border: 2px solid rgb(66, 170, 66);
+  box-shadow: 0 0 12px rgba(66, 170, 66, 0.6);
+  opacity: 0.9;
+}
+
+/* Disabled buttons state */
+.wishlist-item .disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+/* Full-screen backdrop for the modal */
+.modal-backdrop {
+  position: fixed; /* Fixed to the viewport */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Dark/dim background */
+  display: none; /* Initially hidden */
+  justify-content: center; /* Center the adding box horizontally */
+  align-items: center; /* Center the adding box vertically */
+  z-index: 100; /* Ensure it's on top of everything */
+  backdrop-filter: blur(2px); /* Add a slight blur effect */
+}
+
+/* Remove original display: none from .wishlist-adding-box since we use .modal-backdrop to hide it */
+.wishlist-adding-box {
+  /* Existing styles... */
+  display: flex; /* Override the old display: none; */
+  /* Remove old margin-left: 80px if present as we center it now */
+  transform: translateY(100%); /* Start position: below the screen */
+  opacity: 0;
+  transition: transform 0.4s ease-out, opacity 0.4s ease-out; /* Animation */
+}
+
+/* State for when the modal is shown */
+.modal-backdrop.show {
+  display: flex; /* Show the backdrop */
+}
+
+.modal-backdrop.show .wishlist-adding-box {
+  transform: translateY(0); /* End position: centered on screen (0 offset) */
+  opacity: 1;
+}
+
+/* Styling for the close button */
+.wab-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  cursor: pointer;
+}
+.wab-add{
+  /* Ensure the add button is positioned correctly relative to the box */
+  margin-left: auto; /* Push to the right */
+  margin-right: auto; /* Center it */
 }

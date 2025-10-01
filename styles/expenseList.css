@@ -7,7 +7,10 @@
   align-items: center;
   justify-content: center;
 } */
-
+.el-container {
+  padding-bottom: 100px;
+  width: 400px;
+}
 .emb-title {
   background: linear-gradient(
     90deg,
@@ -34,10 +37,10 @@ h4 {
   margin-top: 10px;
   display: flex;
   gap: 10px;
-  width: 400px;
+  width: 100%;
 }
 .hi-income {
-  height: 50px;
+  height: 80px;
   flex: 1;
   padding: 15px;
   border-radius: 12px;
@@ -50,7 +53,7 @@ h4 {
   box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.4);
 }
 .hi-expense {
-  height: 50px;
+  height: 80px;
   flex: 1;
   padding: 15px;
   border-radius: 12px;
@@ -79,6 +82,7 @@ h4 {
 
 /* filter and search */
 .filter-and-search {
+  width: 100%;
   display: flex;
   flex-direction: column;
   padding: 30px;
@@ -145,94 +149,144 @@ h3 {
   color: rgb(67, 66, 66);
   padding: 10px;
 }
+.income-only:hover,
+.expense-only:hover {
+  cursor: pointer;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+border-radius: 10px;
+
+}
 .income-only.active {
-  background-color: brown;
+  background: linear-gradient(90deg, rgb(188, 234, 188), rgb(107, 239, 107));
   border-radius: 15px;
-  color: white;
-  font-weight: 600;
 }
 .expense-only.active {
-  background-color: rgb(46, 120, 17);
+  background: linear-gradient(90deg, rgb(234, 188, 188), rgb(239, 107, 107));
   border-radius: 15px;
-  color: white;
-  font-weight: 600;
 }
-
 
 /* item-list */
-.ei-list{
+.ei-list {
   display: flex;
-    flex-direction: column;
+  flex-direction: column;
   margin-top: 60px;
-  width: 380px;
+  width: 100%;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 10px;
+  padding-bottom: 100px;
 }
-.item-wrapper{
+.item-wrapper {
   background-color: white;
   display: flex;
 
-  padding: 30px;
+  padding: 15px;
   border-radius: 10px;
   justify-content: space-between;
   width: 100%;
   align-items: center;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
-
-
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
 }
-.item-info{
+.item-info {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
-.item-name{
+.item-name {
   font-size: 18px;
-
 }
-.icd-wrapper{
+.icd-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: 10px;
-
 }
-.item-category{
-  font-size: 13px;
+.item-category {
+  font-size: 12px;
+  padding: 2px;
+  padding-left: 7px;
+  padding-right: 7px;
+  border-radius: 7px;
   border: solid brown;
   color: brown;
-  padding: 2px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-radius: 7px;
   background-color: bisque;
-
 }
-.item-date{
+.item-date {
   font-size: 13px;
   color: gray;
 }
-.item-amount{
+.item-amount {
   font-size: 20px;
   font-weight: 600;
 }
 
-#expense-part{
+#expense-part {
   color: rgb(235, 27, 27);
 }
-#balance-part{
+#balance-part {
   color: rgb(29, 197, 29);
 }
 
-.item-amount-edit{
+.item-amount-edit {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
- gap: 15px;
+  gap: 15px;
 }
 
-.item-delete:hover{
+.item-delete:hover {
   cursor: pointer;
+}
+.item-category.food {
+  border: solid rgb(200, 30, 30);
+  color: rgb(200, 30, 30);
+  background-color: rgb(255, 220, 220); /* soft red */
+}
+
+.item-category.bills {
+  border: solid rgb(204, 102, 0);
+  color: rgb(204, 102, 0);
+  background-color: rgb(255, 235, 210); /* warm beige/orange */
+}
+
+.item-category.entertainment {
+  border: solid rgb(34, 153, 84);
+  color: rgb(34, 153, 84);
+  background-color: rgb(220, 245, 230); /* mint green */
+}
+
+.item-category.shopping {
+  border: solid rgb(125, 60, 152);
+  color: rgb(125, 60, 152);
+  background-color: rgb(235, 220, 245); /* lavender */
+}
+
+.item-category.transport {
+  border: solid rgb(50, 42, 165);
+  color: rgb(50, 42, 165);
+  background-color: rgb(196, 212, 255); /* pastel blue */
+}
+
+.item-category.coffee {
+  border: solid rgb(111, 78, 55);
+  color: rgb(111, 78, 55);
+  background-color: rgb(235, 220, 210); /* latte beige */
+}
+.item-category.cash {
+  border: solid rgb(0, 128, 96);
+  color: rgb(0, 128, 96);
+  background-color: rgb(210, 245, 235); /* soft teal */
+}
+
+.item-category.bank {
+  border: solid rgb(123, 36, 28);
+  color: rgb(123, 36, 28);
+  background-color: rgb(245, 225, 220); /* light brick */
+}
+
+.item-category.others {
+  border: solid rgb(90, 90, 90);
+  color: rgb(90, 90, 90);
+  background-color: rgb(230, 230, 230); /* neutral gray */
 }

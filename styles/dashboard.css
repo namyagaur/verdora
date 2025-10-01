@@ -1,51 +1,108 @@
+/* --- Main container --- */
+body {
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontally center everything */
+  justify-content: center;
+  font-family: sans-serif;
+  gap: 30px; /* spacing between sections */
+  padding: 20px;
+}
+.dashboard-container {
+  width: 400px;
+  padding-bottom: 100px;
+  
+}
 
-/* mainbody */
-
-/* current-balance */
+h3 {
+  font-size: 17px;
+}
+.card-title-group {
+  display: flex;
+  justify-content: start;
+  align-items: s;
+}
+/* Balance card */
 .balance-card {
   display: flex;
   flex-direction: column;
-  height: 150px;
-  width: 600px;
-  border: solid;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  align-items: center; /* center content */
   justify-content: space-around;
-  align-items: center;
+  height: 150px;
+  width: 100%; /* thoda chhota for center */
+  padding: 10px;
+  border-radius: 20px;
   background: linear-gradient(145deg, #6a4bff, #a050ff, rgb(36, 170, 188));
   color: white;
-  border-radius: 20px;
-  font-family: sans-serif;
+  text-align: center; /* text center */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
+
 .current-balance {
-  font-size: xxx-large;
+  font-size: 2rem;
   font-weight: 700;
 }
 
-/* infocards */
+/* Info cards container */
 .total-info {
-  margin-top: 50px;
-  width: 600px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: row;
-  gap: 10px;
+  justify-content: center; /* center horizontally */
+  gap: 20px; /* spacing between cards */
+  width: 100%;
+}
+
+/* Individual info cards */
+
+/* Chart card */
+.expense-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content */
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  gap: 15px;
+}
+
+/* Chart container */
+.chart-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
   align-items: center;
 }
 
-.income-index,
+.image-income img {
+  width: 70%;
+  height: 70%;
+}
+.image-expense img {
+  width: 70%;
+  height: 70%;
+}
+.image-savings img {
+  width: 70%;
+  height: 70%;
+}
+
 .expense-index,
 .savings-index {
   display: flex;
   flex: 1;
   flex-direction: column;
-  /* justify-content: space-between; */
+  height: fit-content;
   align-items: center;
   background-color: white;
-  padding: 40px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px rgba(29, 2, 2, 0.13);
 }
-.image-income,
+
 .image-expense,
 .image-savings {
   display: flex;
@@ -63,23 +120,11 @@
 .image-savings {
   background-color: rgb(175, 228, 237);
 }
-.image-income img {
-  width: 70%;
-  height: 70%;
-}
-.image-expense img {
-  width: 70%;
-  height: 70%;
-}
-.image-savings img {
-  width: 70%;
-  height: 70%;
-}
 
 .income-text,
 .expense-text,
-.savings-text{
-  padding-top: 10px;
+.savings-text {
+  padding-top: 5px;
   color: gray;
   font-family: sans-serif;
 }
@@ -87,16 +132,121 @@
 .income-insights,
 .expense-insights,
 .savings-insights {
-  padding-top: 10px;
   color: gray;
   font-family: sans-serif;
   font-size: 22px;
   color: green;
   font-weight: 600;
 }
-.expense-insights{
+.expense-insights {
   color: rgb(170, 28, 28);
 }
-.savings-insights{
+.savings-insights {
   color: rgb(86, 123, 201);
+}
+/* Legend container */
+.cl-cont {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+#chart-legend {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap; /* 2 rows, responsive wrap */
+  gap: 5px 24px;
+  justify-content: space-between;
+}
+.legend-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+
+  font-size: 13px;
+  color: var(--color-text-dark, #333);
+}
+
+.legend-circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+/* Recent transactions */
+.rt-cont {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin-top: 30px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+
+}
+/* <div class="transaction-item">
+  <div class="transaction-details">
+    <div class="description-title">${tx.title}</div>
+    <div class="amount">   ${sign}₹${tx.amount}</div>
+  </div>
+  <div class="transaction-time">
+    <div class="item-category">${tx.category}</div>
+    <div class="item-date">${tx.date}</div>
+  </div>
+</div>; */
+.recent-transactions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.recent-description-title{
+  font-size: 18px;
+  font-weight: 600;
+}
+.transaction-item {
+  height: 80px;
+  width: 95%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.transaction-details {
+  display: flex;
+  justify-content: space-between;
+}
+.transaction-time {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.recent-item-date {
+  font-size: 12px;
+  color: rgb(129, 129, 128);
+}
+.recent-item-category {
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.2px;
+  color: rgb(0, 0, 0);
+  padding: 2px 6px;
+  border-radius: 7px;
+  background-color: rgb(227, 225, 225);
+}
+
+.recent-amount.expense{
+  color: red;
+  font-weight: 700;
+}
+.recent-amount.balance{
+  font-weight: 700;
+  color: rgb(56, 168, 56);
 }

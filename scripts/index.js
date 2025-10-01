@@ -2,12 +2,16 @@ import { initTransCategory } from "./transactions.js";
 import {
   renderList,
   addExpenseList,
-  currentExpenseUpdate,
-  totalExpenseUpdate,
+  updateBalanceInsights,
+  updateExpenseInsights,
+  expenseList,
+  renderRecentTransactions,
 } from "../data/expense.js";
-import { addToWishlist, renderWishList } from "../data/wishlist.js";
-import { currentBalanceUpdate, totalBalanceUpdate } from "../data/balance.js";
+import { addToWishlist, initWishlistToggle, renderWishList } from "../data/wishlist.js";
 import { currentsavingsUpdate } from "../data/savings.js";
+import { initSettingsPage } from "./settings.js";
+import { renderExpensePieChart } from "./piechart.js";
+import { initFilters } from "./filterSearch.js";
 
 const mainBody = document.querySelector(".main-body");
 const tabs = document.querySelectorAll(".icon-tab");
@@ -28,21 +32,34 @@ function loadPage(page) {
       if (page === "expenseList") {
         setTimeout(() => {
           renderList();
-          totalBalanceUpdate();
-          totalExpenseUpdate();
+          updateBalanceInsights();
+          updateExpenseInsights();
+          initFilters();
         }, 0);
       }
       if (page === "dashboard") {
         setTimeout(() => {
-          currentBalanceUpdate();
-          currentExpenseUpdate();
+          updateBalanceInsights();
+          updateExpenseInsights();
           currentsavingsUpdate();
-        }, 0);
+          renderRecentTransactions();
+
+          // Wait until canvas exists
+          const canvas = document.getElementById("expensePieChart");
+          if (canvas) renderExpensePieChart();
+        }, 50); // small delay to ensure DOM is painted
       }
       if (page === "wishlist") {
+         setTimeout(() => {
         addToWishlist();
         renderWishList();
-        // renderWishList();
+        initWishlistToggle();// toggle button works
+    }, 50);
+      }
+      if (page === "settings") {
+        setTimeout(() => {
+          initSettingsPage();
+        }, 0);
       }
     })
     .catch(() => {

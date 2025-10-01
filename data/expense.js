@@ -1,4 +1,4 @@
-import { currentBalanceUpdate, totalBalanceUpdate } from "./balance.js";
+import { renderExpensePieChart } from "../scripts/piechart.js";
 
 export const expenseList = loadList("expenseList") || [];
 export const balanceList = loadList("balanceList") || [];
@@ -25,7 +25,8 @@ export function addExpenseList() {
       const finalAmount = amountInput.value;
       const finalTitle = titleInput.value;
       const finalDate = dateInput.value;
-      const activeNav = document.querySelector(".nav-item.active")?.id || " ";
+      const activeNav =
+        document.querySelector(".nav-item.active")?.id || "expense"; // default to expense
 
       const selectedCategory = document.querySelector(
         ".category-tabs.active"
@@ -77,43 +78,45 @@ export function addExpenseList() {
         .querySelectorAll(".category-tabs")
         .forEach((g) => g.classList.remove("active"));
 
-      renderList(); // render updated list
+      renderList();
+      renderExpensePieChart(); // render updated list
     });
   });
 }
 
 // Render list and use event delegation for delete buttons
-export function renderList() {
+export function renderList(data = eiTracker) {
   const contentDiv = document.querySelector(".ei-list");
   if (!contentDiv) return;
 
-  if (eiTracker.length === 0) {
+  if (data.length === 0) {
     contentDiv.innerHTML = "No Expense Yet :)";
     return;
   }
 
-  let html = eiTracker
+  let html = data
     .map((ei) => {
       const isSign = ei.type === "expense" ? "-" : "+";
       return `
-      <div class="item-wrapper">
-        <div class="item-info">
-          <div class="item-name">${ei.title}</div>
-          <div class="icd-wrapper">
-            <div class="item-category">${ei.category}</div>
-            <div class="item-date">${ei.date}</div>
+        <div class="item-wrapper">
+          <div class="item-info">
+            <div class="item-name">${ei.title}</div>
+            <div class="icd-wrapper">
+              <div class="item-category ${ei.category}">${ei.category}</div>
+              <div class="item-date">${ei.date}</div>
+            </div>
           </div>
-        </div>
-        <div class="item-amount-edit">
-          <div class="item-amount" id="${ei.type}-part">${isSign} ₹${ei.amount}</div>
-          <div class="item-delete" data-id="${ei.id}">🗑️</div>
-        </div>
-      </div>`;
+          <div class="item-amount-edit">
+            <div class="item-amount" id="${ei.type}-part">${isSign} ₹${ei.amount}</div>
+            <div class="item-delete" data-id="${ei.id}">🗑️</div>
+          </div>
+        </div>`;
     })
     .join("");
 
   contentDiv.innerHTML = html;
 }
+
 
 // Event delegation for delete buttons
 document.addEventListener("click", (e) => {
@@ -156,7 +159,8 @@ function handleDelete(btnid) {
     currentsavingsUpdate();
   }
 
-  renderList(); // refresh UI
+  renderList();
+  renderExpensePieChart(); // refresh UI
 }
 
 // Update functions
@@ -174,19 +178,72 @@ export function totalExpenseUpdate() {
   if (div) div.textContent = `₹${total}`;
 }
 
-function updateExpenseInsights() {
+export function updateExpenseInsights() {
   currentExpenseUpdate();
   totalExpenseUpdate();
 }
 
 export function updateBalanceInsights() {
-  let total = balanceList.reduce((sum, item) => sum + Number(item.amount), 0);
-  const divCurrent = document.querySelector(".current-balance");
-  if (divCurrent) divCurrent.textContent = `₹${total}`;
+  // total income (all balance items)
+  let totalIncome = balanceList.reduce(
+    (sum, item) => sum + Number(item.amount),
+    0
+  );
 
-  let totalEi = eiTracker
-    .filter((i) => i.type === "balance")
-    .reduce((sum, item) => sum + Number(item.amount), 0);
+  // total expense (all expense items)
+  let totalExpense = expenseList.reduce(
+    (sum, item) => sum + Number(item.amount),
+    0
+  );
+
+  // current balance = income - expense
+  let currentBalance = totalIncome - totalExpense;
+
+  // Update current balance on UI
+  const divCurrent = document.querySelector(".current-balance");
+  if (divCurrent) divCurrent.textContent = `₹${currentBalance}`;
+
+  // Update total income (without subtracting expenses)
   const divTotal = document.querySelector(".hi-total-income");
-  if (divTotal) divTotal.textContent = `₹${totalEi}`;
+  if (divTotal) divTotal.textContent = `₹${totalIncome}`;
+}
+
+export function renderRecentTransactions() {
+  const container = document.querySelector(".recent-transactions");
+  if (!container) return;
+
+  // Sort eiTracker by date (newest first)
+  const sortedTransactions = [...eiTracker].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
+
+  // Take only the 5 most recent
+  const recentFive = sortedTransactions.slice(0, 5);
+
+  if (recentFive.length === 0) {
+    container.innerHTML = "No transactions yet :)";
+    return;
+  }
+
+  // Build HTML
+  const html = recentFive
+    .map((tx) => {
+      const sign = tx.type === "expense" ? "-" : "+";
+      return `
+        <div class="transaction-item">
+  <div class="transaction-details">
+    <div class="recent-description-title">${tx.title}</div>
+    <div class="recent-amount ${tx.type}">   ${sign}₹${tx.amount}</div>
+  </div>
+  <div class="transaction-time">
+    <div class="recent-item-category">${tx.category}</div>
+    <div class="recent-item-date">${tx.date}</div>
+  </div>
+</div>
+
+      `;
+    })
+    .join("");
+
+  container.innerHTML = html;
 }

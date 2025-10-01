@@ -20,6 +20,7 @@
   top: 0;
   left: 0;
   right: 0;
+  z-index: 50;
 }
 
 .left-nav-title {
@@ -50,9 +51,12 @@
 /* bottom nav */
 
 .bottom-nav {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
+    z-index: 50;
+
 }
 .icon-tab-wrapper {
   display: flex;
@@ -61,7 +65,7 @@
   bottom: 30px;
   background-color: white;
   justify-content: space-between;
-  height: 55px;
+  height: 60px;
   border-radius: 10px;
 }
 
@@ -112,7 +116,6 @@
   align-items: center;
   height: 120vh;
   margin-top: 100px;
-  background: linear-gradient(145deg, white, rgb(226, 226, 244));
-  width: 100%;
+  background-color: var(--color-background-light);  width: fit-content;
   
 }
