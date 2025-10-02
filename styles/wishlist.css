@@ -396,3 +396,99 @@ body.dark-mode .w-remarks.Completed {
   color: #70d870 !important;
   border: #70d870 solid 0.9px !important;
 }
+
+@media (max-width: 500px) {
+    .wl-cont {
+        width: 100%;
+        padding: 0 10px 100px 10px;
+    }
+    .wishlist-item {
+        width: 100%; 
+    }
+    .wt-add {
+        width: 120px; 
+        padding: 8px 5px 8px 15px; 
+    }
+    .wishlist-adding-box {
+        width: 85%; 
+        padding: 20px;
+    }
+}
+
+
+body.dark-mode .wishlist-item,
+body.dark-mode .wishlist-adding-box,
+body.dark-mode .modal-backdrop .wishlist-adding-box {
+    background-color: var(--color-card-background) !important;
+    box-shadow: 2px 2px 10px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .wishlist-adding-box input {
+    background-color: #383838 !important;
+    border: var(--color-border) 0.2px solid !important;
+    color: var(--color-text-dark) !important;
+}
+
+body.dark-mode .w-category {
+    background-color: #383838 !important;
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .ws-title,
+body.dark-mode .wg-title,
+body.dark-mode .wr-title {
+    color: var(--color-text-medium) !important;
+}
+
+body.dark-mode .ws-amount,
+body.dark-mode .wg-amount,
+body.dark-mode .wr-amount,
+body.dark-mode .w-title {
+    color: var(--color-text-dark) !important;
+}
+body.dark-mode .ws-amount {
+    color: var(--color-success) !important;
+}
+body.dark-mode .wr-amount {
+    color: #72aeff !important;
+}
+
+body.dark-mode .wp-progress-bar {
+    background: #444444 !important;
+}
+
+body.dark-mode .w-remarks.Start {
+    background-color: rgba(255, 230, 0, 0.15) !important;
+    color: #ffe600 !important;
+    border: #ffe600 solid 0.9px !important;
+}
+body.dark-mode .w-remarks.Completed {
+    background-color: rgba(112, 216, 112, 0.15) !important;
+    color: #70d870 !important;
+    border: #70d870 solid 0.9px !important;
+}
+body.dark-mode .w-remarks.Halfway {
+    background-color: rgba(114, 174, 255, 0.15) !important;
+    color: #72aeff !important;
+    border: #72aeff solid 0.9px !important;
+}
+body.dark-mode .w-remarks.Almost {
+    background-color: rgba(209, 159, 232, 0.15) !important;
+    color: #d19fe8 !important;
+    border: #d19fe8 solid 0.9px !important;
+}
+
+body.dark-mode #a-50 {
+    background-color: rgba(112, 216, 112, 0.15) !important;
+    color: #70d870 !important;
+    border: #70d870 solid 0.9px !important;
+}
+body.dark-mode #a-100 {
+    background-color: rgba(114, 174, 255, 0.15) !important;
+    color: #72aeff !important;
+    border: #72aeff solid 0.9px !important;
+}
+
+body.dark-mode .wab-close {
+    color: var(--color-text-medium) !important;
+}

@@ -639,3 +639,13 @@ body.dark-mode .divider {
     background-color: var(--color-border) !important;
 }
 
+@media (max-width: 500px) {
+    .app-container {
+        padding: 0 10px 120px 10px; /* Reduced horizontal padding for small screens */
+    }
+    .color-theme.active {
+        /* Remove negative margins in mobile view to keep the active state contained */
+        margin-left: -10px; 
+        margin-right: -10px; 
+    }
+}

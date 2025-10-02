@@ -300,3 +300,18 @@ body.dark-mode .image-expense {
 body.dark-mode .image-savings {
   background-color: rgba(114, 174, 255, 0.2) !important;
 }
+@media (max-width: 500px) {
+    .dashboard-container {
+        width: 100%; 
+        padding: 0 10px 100px 10px; 
+    }
+
+    .total-info {
+        flex-direction: column; 
+        gap: 15px;
+    }
+    
+    .expense-card {
+        width: 100%; 
+    }
+}

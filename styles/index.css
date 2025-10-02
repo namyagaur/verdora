@@ -115,3 +115,16 @@ stroke: var(--color-text-light);
   background-color: var(--color-background-light);  width: fit-content;
   
 }
+@media (max-width: 500px) {
+    .top-nav {
+        padding-left: 20px; /* Smaller padding on mobile */
+        padding-right: 20px;
+ /* Slightly shorter nav bar */
+    }
+    
+    .icon-tab-wrapper {
+        width: 90%; /* Use most of the screen width */
+        bottom: 15px; /* Bring bottom nav closer to the bottom */
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+}
