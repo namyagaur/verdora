@@ -79,12 +79,11 @@ export function addExpenseList() {
         .forEach((g) => g.classList.remove("active"));
 
       renderList();
-      renderExpensePieChart(); // render updated list
+      renderExpensePieChart(); 
     });
   });
 }
 
-// Render list and use event delegation for delete buttons
 export function renderList(data = eiTracker) {
   const contentDiv = document.querySelector(".ei-list");
   if (!contentDiv) return;
@@ -118,7 +117,6 @@ export function renderList(data = eiTracker) {
 }
 
 
-// Event delegation for delete buttons
 document.addEventListener("click", (e) => {
   if (e.target.classList.contains("item-delete")) {
     const btnid = e.target.dataset.id;
@@ -130,14 +128,12 @@ function handleDelete(btnid) {
   const deletedItem = eiTracker.find((p) => p.id === btnid);
   if (!deletedItem) return;
 
-  // Remove from eiTracker
   eiTracker.splice(
     eiTracker.findIndex((p) => p.id === btnid),
     1
   );
   saveList("eiTracker", eiTracker);
 
-  // Remove from respective lists
   if (deletedItem.type === "expense") {
     const index = expenseList.findIndex((p) => p.id === btnid);
     if (index > -1) expenseList.splice(index, 1);
@@ -160,10 +156,9 @@ function handleDelete(btnid) {
   }
 
   renderList();
-  renderExpensePieChart(); // refresh UI
+  renderExpensePieChart(); 
 }
 
-// Update functions
 export function currentExpenseUpdate() {
   let total = expenseList.reduce((sum, item) => sum + Number(item.amount), 0);
   const div = document.querySelector(".expense-insights");
@@ -184,28 +179,25 @@ export function updateExpenseInsights() {
 }
 
 export function updateBalanceInsights() {
-  // total income (all balance items)
-  let totalIncome = balanceList.reduce(
-    (sum, item) => sum + Number(item.amount),
-    0
-  );
+    let totalIncome = balanceList.reduce(
+        (sum, item) => sum + Number(item.amount),
+        0
+    );
 
-  // total expense (all expense items)
-  let totalExpense = expenseList.reduce(
-    (sum, item) => sum + Number(item.amount),
-    0
-  );
+    let totalExpense = expenseList.reduce(
+        (sum, item) => sum + Number(item.amount),
+        0
+    );
 
-  // current balance = income - expense
-  let currentBalance = totalIncome - totalExpense;
+    let currentBalance = totalIncome - totalExpense;
 
-  // Update current balance on UI
-  const divCurrent = document.querySelector(".current-balance");
-  if (divCurrent) divCurrent.textContent = `₹${currentBalance}`;
+    const divCurrent = document.querySelector(".current-balance");
+    if (divCurrent) divCurrent.textContent = `₹${currentBalance}`;
 
-  // Update total income (without subtracting expenses)
-  const divTotal = document.querySelector(".hi-total-income");
-  if (divTotal) divTotal.textContent = `₹${totalIncome}`;
+    const divTotal = document.querySelector(".hi-total-income");
+    if (divTotal) divTotal.textContent = `₹${totalIncome}`;
+    
+    calculateMonthOverMonthChange(); 
 }
 
 export function renderRecentTransactions() {
@@ -251,8 +243,8 @@ export function updateTransactionCount(data = eiTracker) {
     }
 }
 let currentSort = {
-    key: 'date', // 'date' or 'amount'
-    direction: 'desc' // 'asc' or 'desc'
+    key: 'date', 
+    direction: 'desc' 
 };
 
 export function initSortListeners() {
@@ -292,7 +284,7 @@ function sortTransactions() {
             valA = Math.abs(Number(a.amount)); 
             valB = Math.abs(Number(b.amount));
         } else {
-            return 0; // No change
+            return 0; 
         }
 
         let comparison = 0;
@@ -302,12 +294,11 @@ function sortTransactions() {
             comparison = -1;
         }
 
-        // Apply direction: 'asc' uses 1*comparison, 'desc' uses -1*comparison
         return currentSort.direction === 'asc' ? comparison : comparison * -1;
     });
 
     updateSortIcons();
-    renderList(sortedList); // Pass the sorted list to the renderer
+    renderList(sortedList); 
 }
 
 function updateSortIcons() {
@@ -326,3 +317,64 @@ function updateSortIcons() {
         amountIcon.style.opacity = '1';
     }
 }
+
+function getBalanceForMonth(targetMonth, targetYear) {
+    const incomeThisMonth = balanceList
+        .filter(item => {
+            const date = new Date(item.date);
+            return date.getMonth() === targetMonth && date.getFullYear() === targetYear;
+        })
+        .reduce((sum, item) => sum + Number(item.amount), 0);
+
+    const expenseThisMonth = expenseList
+        .filter(item => {
+            const date = new Date(item.date);
+            return date.getMonth() === targetMonth && date.getFullYear() === targetYear;
+        })
+        .reduce((sum, item) => sum + Number(item.amount), 0);
+        
+    return incomeThisMonth - expenseThisMonth;
+}
+
+export function calculateMonthOverMonthChange() {
+    const today = new Date();
+    
+    const currentMonth = today.getMonth();
+    const currentYear = today.getFullYear();
+    const currentMonthBalance = getBalanceForMonth(currentMonth, currentYear);
+
+    let prevMonth = currentMonth === 0 ? 11 : currentMonth - 1;
+    let prevYear = currentMonth === 0 ? currentYear - 1 : currentYear;
+    const prevMonthBalance = getBalanceForMonth(prevMonth, prevYear);
+    
+    const percentDiv = document.querySelector(".percent");
+    if (!percentDiv) return;
+
+    if (prevMonthBalance === 0) {
+        if (currentMonthBalance > 0) {
+            percentDiv.textContent = `+100% this month`;
+            percentDiv.style.color = 'var(--color-success)';
+        } else if (currentMonthBalance < 0) {
+            percentDiv.textContent = `-∞% this month`;
+            percentDiv.style.color = 'var(--color-danger-soft)';
+        } else {
+            percentDiv.textContent = `0% this month`;
+            percentDiv.style.color = 'var(--color-text-medium)';
+        }
+        return;
+    }
+
+    const percentageChange = ((currentMonthBalance - prevMonthBalance) / Math.abs(prevMonthBalance)) * 100;
+    const roundedChange = Math.round(percentageChange * 10) / 10; 
+
+    const sign = roundedChange >= 0 ? "+" : "";
+    
+    percentDiv.textContent = `${sign}${roundedChange}% this month`;
+
+    if (roundedChange >= 0) {
+        percentDiv.style.color = 'var(--color-success)';
+    } else {
+        percentDiv.style.color = 'rgb(220, 53, 69)'; 
+    }
+}
+
