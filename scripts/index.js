@@ -73,7 +73,7 @@ function loadPage(page) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  loadPage("settings"); // default load
+  loadPage("dashboard"); // default load
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", () => {
