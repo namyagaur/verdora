@@ -353,10 +353,10 @@ export function calculateMonthOverMonthChange() {
     if (prevMonthBalance === 0) {
         if (currentMonthBalance > 0) {
             percentDiv.textContent = `+100% this month`;
-            percentDiv.style.color = 'var(--color-success)';
+             percentDiv.style.color = 'rgba(235, 241, 230, 1)';
         } else if (currentMonthBalance < 0) {
             percentDiv.textContent = `-∞% this month`;
-            percentDiv.style.color = 'var(--color-danger-soft)';
+            percentDiv.style.color = 'rgba(245, 225, 225, 1)'; 
         } else {
             percentDiv.textContent = `0% this month`;
             percentDiv.style.color = 'var(--color-text-medium)';
@@ -372,9 +372,9 @@ export function calculateMonthOverMonthChange() {
     percentDiv.textContent = `${sign}${roundedChange}% this month`;
 
     if (roundedChange >= 0) {
-        percentDiv.style.color = 'var(--color-success)';
+        percentDiv.style.color = 'rgba(235, 241, 230, 1)';
     } else {
-        percentDiv.style.color = 'rgb(220, 53, 69)'; 
+        percentDiv.style.color = 'rgba(245, 225, 225, 1)'; 
     }
 }
 
